@@ -1,0 +1,30 @@
+{
+  "name": "electron-react-demo",
+  "version": "1.0.0",
+  "description": "electron + react + antd + echarts + sqlite",
+  "main": "./app/main/index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:renderer\" \"wait-on http://localhost:3000 && npm run start:main\"",
+    "start:main": "electron .",
+    "start:renderer": "cd app/renderer/src/main && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aidonggua/electron-react-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aidonggua/electron-react-demo/issues"
+  },
+  "homepage": "https://github.com/aidonggua/electron-react-demo#readme",
+  "devDependencies": {
+    "electron": "^14.0.1"
+  },
+  "dependencies": {
+    "concurrently": "^6.2.1",
+    "electron-is-dev": "^2.0.0",
+    "wait-on": "^6.0.0"
+  }
+}
