@@ -1,5 +1,5 @@
 import '../global.css'
-import SearchBar from "./SearchBar";
+import SearchBar from "./search-bar/SearchBar";
 import {Divider} from "antd";
 
 
