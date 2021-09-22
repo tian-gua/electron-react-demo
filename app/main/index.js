@@ -2,6 +2,7 @@ const {app, BrowserWindow} = require('electron')
 const isDev = require('electron-is-dev')
 const path = require('path')
 const handleIPC = require('./ipc')
+const {findAll} = require('./query')
 
 let win
 app.on('ready', () => {
@@ -20,4 +21,5 @@ app.on('ready', () => {
     }
 
     handleIPC(win)
+    setTimeout(() => findAll('zyzb'), 10000)
 })
