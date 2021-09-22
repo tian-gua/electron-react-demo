@@ -1,21 +1,16 @@
 import '../../global.css'
 import './SearchBar.css'
-import {useState, useEffect} from "react";
-import {Button, Col, Form, Input, Row, Select} from 'antd'
+import {useState} from "react";
+import {Button, Col, Input, Row, Select} from 'antd'
 
 const {Option} = Select
 
 function SearchBar(props) {
-    let [sector, setSector] = useState()
-    let [sectorList, setSectorList] = useState([])
-    let [stockA, setStockA] = useState('a')
-    let [stockB, setStockB] = useState('b')
-    let [stockC, setStockC] = useState('c')
-    props
+    let sectorList = props.sectorList;
+    let {setStockA, setStockB, setStockC, sector, setSector} = props
 
     const options = []
     if (sectorList) {
-        console.log(sectorList)
         for (const item of sectorList) {
             options.push(<Option key={item.sectorName} value={item.sectorName}>{item.sectorName}</Option>)
         }
@@ -25,7 +20,8 @@ function SearchBar(props) {
         <div className="search-bar">
             <Row gutter={[10, 10]}>
                 <Col span={4}>
-                    <Select className="sector-selector" placeholder="板块" defaultValue={sector} onChange={(v) => setSector(v)}>
+                    <Select className="sector-selector" placeholder="板块" defaultValue={sector}
+                            onChange={(v) => setSector(v)}>
                         {options}
                     </Select>
                 </Col>

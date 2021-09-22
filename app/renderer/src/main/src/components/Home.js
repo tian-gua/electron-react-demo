@@ -9,9 +9,9 @@ const {ipcRenderer} = window.require('electron')
 function Home() {
     let [sector, setSector] = useState()
     let [sectorList, setSectorList] = useState([])
-    let [stockA, setStockA] = useState('a')
-    let [stockB, setStockB] = useState('b')
-    let [stockC, setStockC] = useState('c')
+    let [stockA, setStockA] = useState('')
+    let [stockB, setStockB] = useState('')
+    let [stockC, setStockC] = useState('')
 
     const findAllSectors = async () => {
         const res = await ipcRenderer.invoke('find-all-sectors')
@@ -25,7 +25,8 @@ function Home() {
 
     return (
         <div className="home">
-            <SearchBar stockA={stockA} stockB={stockB} stockC={stockC} sectorList={sectorList} sector={sector}/>
+            <SearchBar stockA={stockA} setStockA={setStockA} stockB={stockB} setStockB={setStockB} stockC={stockC}
+                       setStockC={setStockC} sectorList={sectorList} sector={sector} setSector={setSector}/>
             <Divider/>
         </div>
     );
