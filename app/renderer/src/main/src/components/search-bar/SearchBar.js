@@ -3,26 +3,15 @@ import './SearchBar.css'
 import {useState, useEffect} from "react";
 import {Button, Col, Form, Input, Row, Select} from 'antd'
 
-const {ipcRenderer} = window.require('electron')
-
 const {Option} = Select
 
-function SearchBar() {
-    let [sector, setSector] = useState([])
-    let [stockA, setStockA] = useState('')
-    let [stockB, setStockB] = useState('')
-    let [stockC, setStockC] = useState('')
+function SearchBar(props) {
+    let [sector, setSector] = useState()
     let [sectorList, setSectorList] = useState([])
-
-    const findAllSectors = async () => {
-        const res = await ipcRenderer.invoke('find-all-sectors')
-        setSectorList(res)
-    }
-
-    useEffect(() => {
-        findAllSectors()
-        console.log('send channel: find-all-sectors')
-    }, [sectorList.length])
+    let [stockA, setStockA] = useState('a')
+    let [stockB, setStockB] = useState('b')
+    let [stockC, setStockC] = useState('c')
+    props
 
     const options = []
     if (sectorList) {
