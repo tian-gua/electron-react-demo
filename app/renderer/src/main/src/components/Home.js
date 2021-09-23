@@ -3,6 +3,7 @@ import SearchBar from "./search-bar/SearchBar";
 import {Divider} from "antd";
 
 import {useState, useEffect} from "react";
+import StockChart from "./chart-ground/StockChart";
 
 const {ipcRenderer} = window.require('electron')
 
@@ -28,6 +29,7 @@ function Home() {
             <SearchBar stockA={stockA} setStockA={setStockA} stockB={stockB} setStockB={setStockB} stockC={stockC}
                        setStockC={setStockC} sectorList={sectorList} sector={sector} setSector={setSector}/>
             <Divider/>
+            <StockChart />
         </div>
     );
 }

@@ -1,5 +1,4 @@
 import '../../global.css'
-import './SearchBar.css'
 import {useState} from "react";
 import {Button, Col, Input, Row, Select} from 'antd'
 
@@ -17,10 +16,10 @@ function SearchBar(props) {
     }
 
     return (
-        <div className="search-bar">
+        <div style={{width: '100%', paddingTop: '20px', paddingLeft: '10px', overflow: 'hidden' }}>
             <Row gutter={[10, 10]}>
                 <Col span={4}>
-                    <Select className="sector-selector" placeholder="板块" defaultValue={sector}
+                    <Select style={{width: '100%'}} placeholder="板块" defaultValue={sector}
                             onChange={(v) => setSector(v)}>
                         {options}
                     </Select>
