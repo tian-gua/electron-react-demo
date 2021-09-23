@@ -1,6 +1,6 @@
 import '../../global.css'
 import {useState} from "react";
-import {Button, Col, Input, Row, Select} from 'antd'
+import {Button, Col, Divider, Input, Row, Select} from 'antd'
 
 const {Option} = Select
 
@@ -16,7 +16,7 @@ function SearchBar(props) {
     }
 
     return (
-        <div style={{width: '100%', paddingTop: '20px', paddingLeft: '10px', overflow: 'hidden' }}>
+        <div style={{height: 80, paddingTop: '20px', paddingLeft: '10px', overflow: 'hidden'}}>
             <Row gutter={[10, 10]}>
                 <Col span={4}>
                     <Select style={{width: '100%'}} placeholder="板块" defaultValue={sector}
@@ -40,6 +40,7 @@ function SearchBar(props) {
                     <Button onClick={() => console.log(sector)}>清空</Button>
                 </Col>
             </Row>
+            <Divider/>
         </div>
     );
 }
