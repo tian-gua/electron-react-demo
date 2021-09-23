@@ -16,6 +16,7 @@ function findAllSectors() {
 
     let sectorList = []
     if (res) {
+        console.log(`sql[${sql}]查询结果: ${res}`)
         const sectorValues = res[0]['values']
         for (let i = 0; i < sectorValues.length; i++) {
             sectorList.push({
@@ -29,10 +30,19 @@ function findAllSectors() {
     return sectorList
 }
 
+function findSectorStocks(sectorName) {
+    const sql = 'select * from sector where sector_name = \'' + sectorName + '\''
+    const res = db.exec(sql)
+
+    if (res) {
+        console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
+    }
+}
+
 function findAll(table) {
     const sql = 'select * from ' + table
     let res = db.exec(sql)
-    console.log('执行sql:', sql, ' res: ', res)
+    console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
 }
 
-module.exports = {findAll, findAllSectors}
+module.exports = {findAll, findAllSectors, findSectorStocks}

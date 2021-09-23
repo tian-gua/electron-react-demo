@@ -1,3 +1,5 @@
+import '../../global.css'
+
 import {Card, Col, Row} from 'antd'
 import Chart from "./Chart";
 

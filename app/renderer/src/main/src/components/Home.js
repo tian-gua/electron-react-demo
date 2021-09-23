@@ -9,13 +9,14 @@ const {ipcRenderer} = window.require('electron')
 
 function Home() {
     let [sector, setSector] = useState()
+    let [sectorStocks, setSectorStocks] = useState()
     let [sectorList, setSectorList] = useState([])
     let [stockA, setStockA] = useState('')
     let [stockB, setStockB] = useState('')
     let [stockC, setStockC] = useState('')
 
     const findAllSectors = async () => {
-        const res = await ipcRenderer.invoke('find-all-sectors')
+        const res = await ipcRenderer.invoke('query', 'find-all-sectors')
         setSectorList(res)
     }
 
@@ -28,12 +29,19 @@ function Home() {
         <div className="home">
             <div style={{height: 80}}>
                 <div style={{position: 'fixed', width: '100%', zIndex: 100, backgroundColor: "white"}}>
-                    <SearchBar stockA={stockA} setStockA={setStockA} stockB={stockB} setStockB={setStockB} stockC={stockC}
-                               setStockC={setStockC} sectorList={sectorList} sector={sector} setSector={setSector}/>
+                    <SearchBar
+                        setStockA={setStockA}
+                        setStockB={setStockB}
+                        setStockC={setStockC}
+                        sectorList={sectorList}
+                        sector={sector}
+                        setSector={setSector}
+                        sectorStocks={sectorStocks}
+                        setSectorStocks={setSectorStocks}/>
                 </div>
             </div>
-            <div style={{marginBottom: '20px'}}><StockChart/></div>
-
+            <StockChart/>
+            <div style={{height: '40px'}}/>
         </div>
     );
 }
