@@ -19,15 +19,15 @@ function SearchBar(props) {
     }
 
     const quickSearch = async () => {
-        let stocks = ''
+        let stocks = []
         if (stockA) {
-            stocks += stockA
+            stocks.push(stockA)
         }
         if (stockB) {
-            stocks += stockB
+            stocks.push(stockB)
         }
         if (stockC) {
-            stocks += stockC
+            stocks.push(stockC)
         }
         const res = await ipcRenderer.invoke('query', 'list-stocks-data', {stocks})
         setStockData(res)

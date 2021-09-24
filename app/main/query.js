@@ -39,16 +39,23 @@ function findSectorStocks(sectorName) {
     if (!res) {
         return []
     }
-    // const stockListValues = res[0]['values']
-    // stockListValues.forEach(item => {
-    //     stockList.push({
-    //         stockCode: item[2],
-    //         stockName: item[3]
-    //     })
-    // })
     const stockList = transfer(res)
     console.log(stockList)
     return stockList
+}
+
+function listStocksData(stocks, indicator) {
+    const sql = `select ${indicator} from zyzb where stock_code = '${stocks[0]}'`
+    const res = db.exec(sql)
+
+    console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
+    if (!res) {
+        return []
+    }
+
+    const stockDataList = transfer(res)
+    console.log(stockDataList)
+    return stockDataList
 }
 
 function transfer(res) {
