@@ -11,9 +11,7 @@ function Home() {
     let [sector, setSector] = useState()
     let [sectorStocks, setSectorStocks] = useState()
     let [sectorList, setSectorList] = useState([])
-    let [stockA, setStockA] = useState('')
-    let [stockB, setStockB] = useState('')
-    let [stockC, setStockC] = useState('')
+    let [stockData, setStockData] = useState('')
 
     const findAllSectors = async () => {
         const res = await ipcRenderer.invoke('query', 'find-all-sectors')
@@ -30,17 +28,14 @@ function Home() {
             <div style={{height: 80}}>
                 <div style={{position: 'fixed', width: '100%', zIndex: 100, backgroundColor: "white"}}>
                     <SearchBar
-                        setStockA={setStockA}
-                        setStockB={setStockB}
-                        setStockC={setStockC}
                         sectorList={sectorList}
-                        sector={sector}
-                        setSector={setSector}
                         sectorStocks={sectorStocks}
-                        setSectorStocks={setSectorStocks}/>
+                        setSectorStocks={setSectorStocks}
+                        setStockData={setStockData}
+                    />
                 </div>
             </div>
-            <StockChart/>
+            <StockChart stockData={stockData}/>
             <div style={{height: '40px'}}/>
         </div>
     );
