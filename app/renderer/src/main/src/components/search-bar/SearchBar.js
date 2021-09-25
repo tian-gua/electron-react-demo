@@ -1,6 +1,6 @@
 import '../../global.css'
 import {useState} from "react";
-import {Button, Col, Divider, Input, Row, Select} from 'antd'
+import {Button, Col, Divider, Input, Row, Select, message} from 'antd'
 
 const {Option} = Select
 
@@ -29,7 +29,11 @@ function SearchBar(props) {
         if (stockC) {
             stocks.push(stockC)
         }
-        const res = await ipcRenderer.invoke('query', 'list-stocks-data', {stocks})
+        if (!stocks || stocks.length === 0) {
+            message.info('请选择标的');
+            return
+        }
+        const res = await ipcRenderer.invoke('query', 'list-stocks-data', {stocks, indicator: 'jlr'})
         setStockData(res)
     }
 

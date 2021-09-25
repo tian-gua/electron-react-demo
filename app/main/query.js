@@ -31,7 +31,7 @@ function findAllSectors() {
     return sectorList
 }
 
-function findSectorStocks(sectorName) {
+function findSectorStocks({sectorName}) {
     const sql = 'select * from sector where sector_name = \'' + sectorName + '\''
     const res = db.exec(sql)
 
@@ -44,8 +44,8 @@ function findSectorStocks(sectorName) {
     return stockList
 }
 
-function listStocksData(stocks, indicator) {
-    const sql = `select ${indicator} from zyzb where stock_code = '${stocks[0]}'`
+function listStocksData({stocks, indicator}) {
+    const sql = `select ${indicator},term from zyzb where stock_code = '${stocks[0]}'`
     const res = db.exec(sql)
 
     console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
@@ -79,4 +79,4 @@ function findAll(table) {
     console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
 }
 
-module.exports = {findAll, findAllSectors, findSectorStocks}
+module.exports = {findAll, findAllSectors, findSectorStocks, listStocksData}
