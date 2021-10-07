@@ -10,7 +10,7 @@ function StockChart() {
         <Row gutter={[20, 20]}>
             <Col span={12}>
                 <Card bordered={true} style={{width: '100%', height: 400}}>
-                    <Chart chartId={1} report='zyzb' defaultIndicator='Jlr'/>
+                    <Chart chartId={1} report='zyzb' defaultIndicator='jlr'/>
                 </Card>
             </Col>
             <Col span={12}>

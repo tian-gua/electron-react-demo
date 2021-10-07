@@ -3,822 +3,822 @@ const indicator = {
     zyzb: [
         {
             indicatorName: '营业收入',
-            indicatorCode: 'Yysr',
+            indicatorCode: 'yysr',
             unit: '亿'
         }, {
             indicatorName: '营业收入同比增长',
-            indicatorCode: 'Yysrtbzz',
+            indicatorCode: 'yysrtbzz',
             unit: '亿'
         },
         {
             indicatorName: '净利润',
-            indicatorCode: 'Jlr',
+            indicatorCode: 'jlr',
             unit: '亿'
         },
         {
             indicatorName: '净利润同比增长',
-            indicatorCode: 'Jlrtbzz',
+            indicatorCode: 'jlrtbzz',
             unit: '亿'
         },
         {
             indicatorName: '扣非净利润',
-            indicatorCode: 'Kfjlr',
+            indicatorCode: 'kfjlr',
             unit: '亿'
         },
         {
             indicatorName: '扣非净利润同比增长',
-            indicatorCode: 'Kfjlrtbzz',
+            indicatorCode: 'kfjlrtbzz',
             unit: '亿'
         },
         {
             indicatorName: '每股收益',
-            indicatorCode: 'Mgsy',
+            indicatorCode: 'mgsy',
             unit: '亿'
         },
         {
             indicatorName: '每股净资产',
-            indicatorCode: 'Mgjzc',
+            indicatorCode: 'mgjzc',
             unit: '亿'
         },
         {
             indicatorName: '每股资本公积金',
-            indicatorCode: 'Mgzbgjj',
+            indicatorCode: 'mgzbgjj',
             unit: '亿'
         },
         {
             indicatorName: '每股未分配利润',
-            indicatorCode: 'Mgwfplr',
+            indicatorCode: 'mgwfplr',
             unit: '亿'
         },
         {
             indicatorName: '每股经营现金流',
-            indicatorCode: 'Mgjyxjl',
+            indicatorCode: 'mgjyxjl',
             unit: '亿'
         },
         {
             indicatorName: '净资产收益率',
-            indicatorCode: 'Jzcsyl',
+            indicatorCode: 'jzcsyl',
             unit: '亿'
         },
         {
             indicatorName: '净资产收益率-摊薄',
-            indicatorCode: 'Jzcsyltb',
+            indicatorCode: 'jzcsyltb',
             unit: '亿'
         },
         {
             indicatorName: '总资产报酬率',
-            indicatorCode: 'Zzcbcl',
+            indicatorCode: 'zzcbcl',
             unit: '亿'
         },
         {
             indicatorName: '人力投入回报率',
-            indicatorCode: 'Rltrhbl',
+            indicatorCode: 'rltrhbl',
             unit: '亿'
         },
         {
             indicatorName: '销售毛利率',
-            indicatorCode: 'Xsmll',
+            indicatorCode: 'xsmll',
             unit: '亿'
         },
         {
             indicatorName: '销售净利率',
-            indicatorCode: 'Xsjll',
+            indicatorCode: 'xsjll',
             unit: '亿'
         },
         {
             indicatorName: '资产负债率',
-            indicatorCode: 'Zcfzl',
+            indicatorCode: 'zcfzl',
             unit: '亿'
         },
         {
             indicatorName: '流动比率',
-            indicatorCode: 'Ldbl',
+            indicatorCode: 'ldbl',
             unit: '亿'
         },
         {
             indicatorName: '速动比率',
-            indicatorCode: 'Sdbl',
+            indicatorCode: 'sdbl',
             unit: '亿'
         },
         {
             indicatorName: '权益乘数',
-            indicatorCode: 'Qycs',
+            indicatorCode: 'qycs',
             unit: '亿'
         },
         {
             indicatorName: '产权比率',
-            indicatorCode: 'Cqbl',
+            indicatorCode: 'cqbl',
             unit: '亿'
         },
         {
             indicatorName: '股东权益比率',
-            indicatorCode: 'Gdqybl',
+            indicatorCode: 'gdqybl',
             unit: '亿'
         },
         {
             indicatorName: '现金流量比率',
-            indicatorCode: 'Xjllbl',
+            indicatorCode: 'xjllbl',
             unit: '亿'
         },
         {
             indicatorName: '存货周转天数',
-            indicatorCode: 'Chzzts',
+            indicatorCode: 'chzzts',
             unit: '亿'
         },
         {
             indicatorName: '应收账款周转天数',
-            indicatorCode: 'Yszkzzts',
+            indicatorCode: 'yszkzzts',
             unit: '亿'
         },
         {
             indicatorName: '应付账款周转天数',
-            indicatorCode: 'Yfzkzzts',
+            indicatorCode: 'yfzkzzts',
             unit: '亿'
         },
         {
             indicatorName: '现金循环周期',
-            indicatorCode: 'Xjxhzq',
+            indicatorCode: 'xjxhzq',
             unit: '亿'
         },
         {
             indicatorName: '营业周期',
-            indicatorCode: 'Yyzq',
+            indicatorCode: 'yyzq',
             unit: '亿'
         },
         {
             indicatorName: '总资产周转率',
-            indicatorCode: 'Zzczzl',
+            indicatorCode: 'zzczzl',
             unit: '亿'
         },
         {
             indicatorName: '存货周转率',
-            indicatorCode: 'Chzzl',
+            indicatorCode: 'chzzl',
             unit: '亿'
         },
         {
             indicatorName: '应收账款周转率',
-            indicatorCode: 'Yszkzzl',
+            indicatorCode: 'yszkzzl',
             unit: '亿'
         },
         {
             indicatorName: '应付账款周转率',
-            indicatorCode: 'Yfzkzzl',
+            indicatorCode: 'yfzkzzl',
             unit: '亿'
         },
         {
             indicatorName: '流动资产周转率',
-            indicatorCode: 'Ldzczzl',
+            indicatorCode: 'ldzczzl',
             unit: '亿'
         },
         {
             indicatorName: '固定资产周转率',
-            indicatorCode: 'Gdzczzl',
+            indicatorCode: 'gdzczzl',
             unit: '亿'
         }
     ],
     lrb: [
         {
             indicatorName: '营业总收入',
-            indicatorCode: 'Yyzsr',
+            indicatorCode: 'yyzsr',
             unit: '亿'
         },
         {
             indicatorName: '其中：营业收入',
-            indicatorCode: 'Yysr',
+            indicatorCode: 'yysr',
             unit: '亿'
         },
         {
             indicatorName: '营业总成本',
-            indicatorCode: 'Yyzcb',
+            indicatorCode: 'yyzcb',
             unit: '亿'
         },
         {
             indicatorName: '其中：营业成本',
-            indicatorCode: 'Yycb',
+            indicatorCode: 'yycb',
             unit: '亿'
         },
         {
             indicatorName: '营业税金及附加',
-            indicatorCode: 'Yysjjfj',
+            indicatorCode: 'yysjjfj',
             unit: '亿'
         },
         {
             indicatorName: '销售费用',
-            indicatorCode: 'Xsfy',
+            indicatorCode: 'xsfy',
             unit: '亿'
         },
         {
             indicatorName: '管理费用',
-            indicatorCode: 'Glfy',
+            indicatorCode: 'glfy',
             unit: '亿'
         },
         {
             indicatorName: '研发费用',
-            indicatorCode: 'Yffy',
+            indicatorCode: 'yffy',
             unit: '亿'
         },
         {
             indicatorName: '财务费用',
-            indicatorCode: 'Cwfy',
+            indicatorCode: 'cwfy',
             unit: '亿'
         },
         {
             indicatorName: '其中：利息费用',
-            indicatorCode: 'Lxfy',
+            indicatorCode: 'lxfy',
             unit: '亿'
         },
         {
             indicatorName: '利息收入',
-            indicatorCode: 'Lxsr',
+            indicatorCode: 'lxsr',
             unit: '亿'
         },
         {
             indicatorName: '资产减值损失',
-            indicatorCode: 'Zcjzss',
+            indicatorCode: 'zcjzss',
             unit: '亿'
         },
         {
             indicatorName: '信用减值损失',
-            indicatorCode: 'Xyjzss',
+            indicatorCode: 'xyjzss',
             unit: '亿'
         },
         {
             indicatorName: '加：公允价值变动收益',
-            indicatorCode: 'Gyjzbdsy',
+            indicatorCode: 'gyjzbdsy',
             unit: '亿'
         },
         {
             indicatorName: '投资收益',
-            indicatorCode: 'Tzsy',
+            indicatorCode: 'tzsy',
             unit: '亿'
         },
         {
             indicatorName: '其中：对联营企业和合营企业的投资收益',
-            indicatorCode: 'Dlyqyhhyqydtzsy',
+            indicatorCode: 'dlyqyhhyqydtzsy',
             unit: '亿'
         },
         {
             indicatorName: '资产处置收益',
-            indicatorCode: 'Zcczsy',
+            indicatorCode: 'zcczsy',
             unit: '亿'
         },
         {
             indicatorName: '其他收益',
-            indicatorCode: 'Qtsy',
+            indicatorCode: 'qtsy',
             unit: '亿'
         },
         {
             indicatorName: '营业利润',
-            indicatorCode: 'Yylr',
+            indicatorCode: 'yylr',
             unit: '亿'
         },
         {
             indicatorName: '加：营业外收入',
-            indicatorCode: 'Yywsr',
+            indicatorCode: 'yywsr',
             unit: '亿'
         },
         {
             indicatorName: '其中：非流动资产处置利得',
-            indicatorCode: 'Fldzcczld',
+            indicatorCode: 'fldzcczld',
             unit: '亿'
         },
         {
             indicatorName: '减：营业外支出',
-            indicatorCode: 'Yywzc',
+            indicatorCode: 'yywzc',
             unit: '亿'
         },
         {
             indicatorName: '其中：非流动资产处置损失',
-            indicatorCode: 'Fldzcczss',
+            indicatorCode: 'fldzcczss',
             unit: '亿'
         },
         {
             indicatorName: '利润总额',
-            indicatorCode: 'Lrze',
+            indicatorCode: 'lrze',
             unit: '亿'
         },
         {
             indicatorName: '减：所得税费用',
-            indicatorCode: 'Sdsfy',
+            indicatorCode: 'sdsfy',
             unit: '亿'
         },
         {
             indicatorName: '净利润差额(合计平衡项目)',
-            indicatorCode: 'Jlrcehjphxm',
+            indicatorCode: 'jlrcehjphxm',
             unit: '亿'
         },
         {
             indicatorName: '净利润',
-            indicatorCode: 'Jlr',
+            indicatorCode: 'jlr',
             unit: '亿'
         },
         {
             indicatorName: '（一）持续经营净利润',
-            indicatorCode: 'Cxjyjlr',
+            indicatorCode: 'cxjyjlr',
             unit: '亿'
         },
         {
             indicatorName: '归属于母公司所有者的净利润',
-            indicatorCode: 'Gsymgssdzdjlr',
+            indicatorCode: 'gsymgssdzdjlr',
             unit: '亿'
         },
         {
             indicatorName: '少数股东损益',
-            indicatorCode: 'Ssgdsy',
+            indicatorCode: 'ssgdsy',
             unit: '亿'
         },
         {
             indicatorName: '扣除非经常性损益后的净利润',
-            indicatorCode: 'Kcfjyxsyhdjlr',
+            indicatorCode: 'kcfjyxsyhdjlr',
             unit: '亿'
         },
         {
             indicatorName: '每股收益',
-            indicatorCode: 'Mgsy',
+            indicatorCode: 'mgsy',
             unit: '亿'
         },
         {
             indicatorName: '基本每股收益',
-            indicatorCode: 'Jbmgsy',
+            indicatorCode: 'jbmgsy',
             unit: '亿'
         },
         {
             indicatorName: '稀释每股收益',
-            indicatorCode: 'Xsmgsy',
+            indicatorCode: 'xsmgsy',
             unit: '亿'
         },
         {
             indicatorName: '其他综合收益',
-            indicatorCode: 'Qtzhsy',
+            indicatorCode: 'qtzhsy',
             unit: '亿'
         },
         {
             indicatorName: '归属母公司所有者的其他综合收益',
-            indicatorCode: 'Gsmgssyzdqtzhsy',
+            indicatorCode: 'gsmgssyzdqtzhsy',
             unit: '亿'
         },
         {
             indicatorName: '综合收益总额',
-            indicatorCode: 'Zhsyze',
+            indicatorCode: 'zhsyze',
             unit: '亿'
         },
         {
             indicatorName: '归属于母公司股东的综合收益总额',
-            indicatorCode: 'Gsymgsgddzhsyze',
+            indicatorCode: 'gsymgsgddzhsyze',
             unit: '亿'
         },
         {
             indicatorName: '归属于少数股东的综合收益总额',
-            indicatorCode: 'Gsyssgddzhsyze',
+            indicatorCode: 'gsyssgddzhsyze',
             unit: '亿'
         },
     ],
     zcfzb: [
         {
             indicatorName: '货币资金',
-            indicatorCode: 'Hbzj',
+            indicatorCode: 'hbzj',
             unit: '亿'
         },
         {
             indicatorName: '交易性金融资产',
-            indicatorCode: 'Jyxjrzc',
+            indicatorCode: 'jyxjrzc',
             unit: '亿'
         },
         {
             indicatorName: '应收票据及应收账款',
-            indicatorCode: 'Yspjjyszk',
+            indicatorCode: 'yspjjyszk',
             unit: '亿'
         },
         {
             indicatorName: '其中：应收票据',
-            indicatorCode: 'Yspj',
+            indicatorCode: 'yspj',
             unit: '亿'
         },
         {
             indicatorName: '应收账款',
-            indicatorCode: 'Yszk',
+            indicatorCode: 'yszk',
             unit: '亿'
         },
         {
             indicatorName: '预付款项',
-            indicatorCode: 'Yfkx',
+            indicatorCode: 'yfkx',
             unit: '亿'
         },
         {
             indicatorName: '应收利息',
-            indicatorCode: 'Yslx',
+            indicatorCode: 'yslx',
             unit: '亿'
         },
         {
             indicatorName: '其他应收款',
-            indicatorCode: 'Qtysk',
+            indicatorCode: 'qtysk',
             unit: '亿'
         },
         {
             indicatorName: '存货',
-            indicatorCode: 'Ch',
+            indicatorCode: 'ch',
             unit: '亿'
         },
         {
             indicatorName: '其他流动资产',
-            indicatorCode: 'Qtldzc',
+            indicatorCode: 'qtldzc',
             unit: '亿'
         },
         {
             indicatorName: '流动资产合计',
-            indicatorCode: 'Ldzchj',
+            indicatorCode: 'ldzchj',
             unit: '亿'
         },
         {
             indicatorName: '长期应收款',
-            indicatorCode: 'Cqysk',
+            indicatorCode: 'cqysk',
             unit: '亿'
         },
         {
             indicatorName: '长期股权投资',
-            indicatorCode: 'Cqgqtz',
+            indicatorCode: 'cqgqtz',
             unit: '亿'
         },
         {
             indicatorName: '其他权益工具投资',
-            indicatorCode: 'Qtqygjtz',
+            indicatorCode: 'qtqygjtz',
             unit: '亿'
         },
         {
             indicatorName: '其他非流动金融资产',
-            indicatorCode: 'Qtfldjrzc',
+            indicatorCode: 'qtfldjrzc',
             unit: '亿'
         },
         {
             indicatorName: '投资性房地产',
-            indicatorCode: 'Tzxfdc',
+            indicatorCode: 'tzxfdc',
             unit: '亿'
         },
         {
             indicatorName: '固定资产合计',
-            indicatorCode: 'Gdzchj',
+            indicatorCode: 'gdzchj',
             unit: '亿'
         },
         {
             indicatorName: '在建工程合计',
-            indicatorCode: 'Zjgchj',
+            indicatorCode: 'zjgchj',
             unit: '亿'
         },
         {
             indicatorName: '无形资产',
-            indicatorCode: 'Wxzc',
+            indicatorCode: 'wxzc',
             unit: '亿'
         },
         {
             indicatorName: '商誉',
-            indicatorCode: 'Sy',
+            indicatorCode: 'sy',
             unit: '亿'
         },
         {
             indicatorName: '长期待摊费用',
-            indicatorCode: 'Cqdtfy',
+            indicatorCode: 'cqdtfy',
             unit: '亿'
         },
         {
             indicatorName: '其他非流动资产',
-            indicatorCode: 'Qtfldzc',
+            indicatorCode: 'qtfldzc',
             unit: '亿'
         },
         {
             indicatorName: '非流动资产合计',
-            indicatorCode: 'Fldzchj',
+            indicatorCode: 'fldzchj',
             unit: '亿'
         },
         {
             indicatorName: '资产合计',
-            indicatorCode: 'Zchj',
+            indicatorCode: 'zchj',
             unit: '亿'
         },
         {
             indicatorName: '短期借款',
-            indicatorCode: 'Dqjk',
+            indicatorCode: 'dqjk',
             unit: '亿'
         },
         {
             indicatorName: '应付票据及应付账款',
-            indicatorCode: 'Yfpjjyfzk',
+            indicatorCode: 'yfpjjyfzk',
             unit: '亿'
         },
         {
             indicatorName: '应付票据',
-            indicatorCode: 'Yfpj',
+            indicatorCode: 'yfpj',
             unit: '亿'
         },
         {
             indicatorName: '应付账款',
-            indicatorCode: 'Yfzk',
+            indicatorCode: 'yfzk',
             unit: '亿'
         },
         {
             indicatorName: '预收款项',
-            indicatorCode: 'Yskx',
+            indicatorCode: 'yskx',
             unit: '亿'
         },
         {
             indicatorName: '合同负债',
-            indicatorCode: 'Htfz',
+            indicatorCode: 'htfz',
             unit: '亿'
         },
         {
             indicatorName: '应付职工薪酬',
-            indicatorCode: 'Yfzgxc',
+            indicatorCode: 'yfzgxc',
             unit: '亿'
         },
         {
             indicatorName: '应交税费',
-            indicatorCode: 'Yjsf',
+            indicatorCode: 'yjsf',
             unit: '亿'
         },
         {
             indicatorName: '应付利息',
-            indicatorCode: 'Yflx',
+            indicatorCode: 'yflx',
             unit: '亿'
         },
         {
             indicatorName: '其他应付款',
-            indicatorCode: 'Qtyfk',
+            indicatorCode: 'qtyfk',
             unit: '亿'
         },
         {
             indicatorName: '其他流动负债',
-            indicatorCode: 'Qtldfz',
+            indicatorCode: 'qtldfz',
             unit: '亿'
         },
         {
             indicatorName: '流动负债合计',
-            indicatorCode: 'Ldfzhj',
+            indicatorCode: 'ldfzhj',
             unit: '亿'
         },
         {
             indicatorName: '长期借款',
-            indicatorCode: 'Cqjk',
+            indicatorCode: 'cqjk',
             unit: '亿'
         },
         {
             indicatorName: '应付债券',
-            indicatorCode: 'Yfzq',
+            indicatorCode: 'yfzq',
             unit: '亿'
         },
         {
             indicatorName: '长期应付款合计',
-            indicatorCode: 'Cqyfkhj',
+            indicatorCode: 'cqyfkhj',
             unit: '亿'
         },
         {
             indicatorName: '长期应付款',
-            indicatorCode: 'Cqyfk',
+            indicatorCode: 'cqyfk',
             unit: '亿'
         },
         {
             indicatorName: '专项应付款',
-            indicatorCode: 'Zxyfk',
+            indicatorCode: 'zxyfk',
             unit: '亿'
         },
         {
             indicatorName: '其他非流动负债',
-            indicatorCode: 'Qtfldfz',
+            indicatorCode: 'qtfldfz',
             unit: '亿'
         },
         {
             indicatorName: '非流动负债合计',
-            indicatorCode: 'Fldfzhj',
+            indicatorCode: 'fldfzhj',
             unit: '亿'
         },
         {
             indicatorName: '负债合计',
-            indicatorCode: 'Fzhj',
+            indicatorCode: 'fzhj',
             unit: '亿'
         },
         {
             indicatorName: '实收资本(或股本)',
-            indicatorCode: 'Sszb',
+            indicatorCode: 'sszb',
             unit: '亿'
         },
         {
             indicatorName: '资本公积',
-            indicatorCode: 'Zbgj',
+            indicatorCode: 'zbgj',
             unit: '亿'
         },
         {
             indicatorName: '其他综合收益',
-            indicatorCode: 'Qtzhsy',
+            indicatorCode: 'qtzhsy',
             unit: '亿'
         },
         {
             indicatorName: '盈余公积',
-            indicatorCode: 'Yygj',
+            indicatorCode: 'yygj',
             unit: '亿'
         },
         {
             indicatorName: '未分配利润',
-            indicatorCode: 'Wfplr',
+            indicatorCode: 'wfplr',
             unit: '亿'
         },
         {
             indicatorName: '归属于母公司股东权益合计',
-            indicatorCode: 'Gsymgsgdqyhj',
+            indicatorCode: 'gsymgsgdqyhj',
             unit: '亿'
         },
         {
             indicatorName: '少数股东权益',
-            indicatorCode: 'Ssgdqy',
+            indicatorCode: 'ssgdqy',
             unit: '亿'
         },
         {
             indicatorName: '股东权益合计',
-            indicatorCode: 'Gdqyhj',
+            indicatorCode: 'gdqyhj',
             unit: '亿'
         },
         {
             indicatorName: '负债和股东权益总计',
-            indicatorCode: 'Fzhgdqyzj',
+            indicatorCode: 'fzhgdqyzj',
             unit: '亿'
         }
     ],
     xjllb: [
         {
             indicatorName: '销售商品、提供劳务收到的现金',
-            indicatorCode: 'Xsspsddxj',
+            indicatorCode: 'xsspsddxj',
             unit: '亿'
         },
         {
             indicatorName: '收到的税费返还',
-            indicatorCode: 'Sffh',
+            indicatorCode: 'sffh',
             unit: '亿'
         },
         {
             indicatorName: '收到其他与经营活动有关的现金',
-            indicatorCode: 'Qtjyhd',
+            indicatorCode: 'qtjyhd',
             unit: '亿'
         },
         {
             indicatorName: '经营活动现金流入小计',
-            indicatorCode: 'Jyhdxjlrxj',
+            indicatorCode: 'jyhdxjlrxj',
             unit: '亿'
         },
         {
             indicatorName: '购买商品、接受劳务支付的现金',
-            indicatorCode: 'Gmspzfdxj',
+            indicatorCode: 'gmspzfdxj',
             unit: '亿'
         },
         {
             indicatorName: '支付给职工以及为职工支付的现金',
-            indicatorCode: 'Zgzfdxj',
+            indicatorCode: 'zgzfdxj',
             unit: '亿'
         },
         {
             indicatorName: '支付的各项税费',
-            indicatorCode: 'Zfdgxsf',
+            indicatorCode: 'zfdgxsf',
             unit: '亿'
         },
         {
             indicatorName: '支付其他与经营活动有关的现金',
-            indicatorCode: 'Zfqtyjjhdygdxj',
+            indicatorCode: 'zfqtyjjhdygdxj',
             unit: '亿'
         },
         {
             indicatorName: '经营活动现金流出小计',
-            indicatorCode: 'Jyhdxjlcxj',
+            indicatorCode: 'jyhdxjlcxj',
             unit: '亿'
         },
         {
             indicatorName: '经营活动产生的现金流量净额',
-            indicatorCode: 'Jyhdcsdxjllje',
+            indicatorCode: 'jyhdcsdxjllje',
             unit: '亿'
         },
         {
             indicatorName: '收回投资收到的现金',
-            indicatorCode: 'Shtzsddxj',
+            indicatorCode: 'shtzsddxj',
             unit: '亿'
         },
         {
             indicatorName: '取得投资收益收到的现金',
-            indicatorCode: 'Qdtzsysddxj',
+            indicatorCode: 'qdtzsysddxj',
             unit: '亿'
         },
         {
             indicatorName: '处置固定资产、无形资产和其他长期资产收回的现金净额',
-            indicatorCode: 'Qtcqzcshdxjje',
+            indicatorCode: 'qtcqzcshdxjje',
             unit: '亿'
         },
         {
             indicatorName: '处置子公司及其他营业单位收到的现金净额',
-            indicatorCode: 'Qtyydwsddxjje',
+            indicatorCode: 'qtyydwsddxjje',
             unit: '亿'
         },
         {
             indicatorName: '收到其他与投资活动有关的现金',
-            indicatorCode: 'Sdqtytzhdygdxj',
+            indicatorCode: 'sdqtytzhdygdxj',
             unit: '亿'
         },
         {
             indicatorName: '投资活动现金流入小计',
-            indicatorCode: 'Tzhdxjlrxj',
+            indicatorCode: 'tzhdxjlrxj',
             unit: '亿'
         },
         {
             indicatorName: '购建固定资产、无形资产和其他长期资产支付的现金',
-            indicatorCode: 'Cqzczfdxj',
+            indicatorCode: 'cqzczfdxj',
             unit: '亿'
         },
         {
             indicatorName: '投资支付的现金',
-            indicatorCode: 'Tzzfdxj',
+            indicatorCode: 'tzzfdxj',
             unit: '亿'
         },
         {
             indicatorName: '取得子公司及其他营业单位支付的现金净额',
-            indicatorCode: 'Qtyydwzfdxjje',
+            indicatorCode: 'qtyydwzfdxjje',
             unit: '亿'
         },
         {
             indicatorName: '支付其他与投资活动有关的现金',
-            indicatorCode: 'Zfqtytzhdygdxj',
+            indicatorCode: 'zfqtytzhdygdxj',
             unit: '亿'
         },
         {
             indicatorName: '投资活动现金流出小计',
-            indicatorCode: 'Tzhdxjlcxj',
+            indicatorCode: 'tzhdxjlcxj',
             unit: '亿'
         },
         {
             indicatorName: '投资活动产生的现金流量净额',
-            indicatorCode: 'Tzhdcsdxjllje',
+            indicatorCode: 'tzhdcsdxjllje',
             unit: '亿'
         },
         {
             indicatorName: '吸收投资收到的现金',
-            indicatorCode: 'Xstzsddxj',
+            indicatorCode: 'xstzsddxj',
             unit: '亿'
         },
         {
             indicatorName: '取得借款收到的现金',
-            indicatorCode: 'Qdjksddxj',
+            indicatorCode: 'qdjksddxj',
             unit: '亿'
         },
         {
             indicatorName: '发行债券收到的现金',
-            indicatorCode: 'Fxzqsddxj',
+            indicatorCode: 'fxzqsddxj',
             unit: '亿'
         },
         {
             indicatorName: '收到其他与筹资活动有关的现金',
-            indicatorCode: 'Sdqtyczhdygdxj',
+            indicatorCode: 'sdqtyczhdygdxj',
             unit: '亿'
         },
         {
             indicatorName: '筹资活动现金流入小计',
-            indicatorCode: 'Czhdxjlrxj',
+            indicatorCode: 'czhdxjlrxj',
             unit: '亿'
         },
         {
             indicatorName: '偿还债务支付的现金',
-            indicatorCode: 'Chzwzfdxj',
+            indicatorCode: 'chzwzfdxj',
             unit: '亿'
         },
         {
             indicatorName: '分配股利、利润或偿付利息支付的现金',
-            indicatorCode: 'Cflxzfdxj',
+            indicatorCode: 'cflxzfdxj',
             unit: '亿'
         },
         {
             indicatorName: '支付其他与筹资活动有关的现金',
-            indicatorCode: 'Zfqtyczhdygdxj',
+            indicatorCode: 'zfqtyczhdygdxj',
             unit: '亿'
         },
         {
             indicatorName: '筹资活动现金流出小计',
-            indicatorCode: 'Czhdxjlcxj',
+            indicatorCode: 'czhdxjlcxj',
             unit: '亿'
         },
         {
             indicatorName: '筹资活动产生的现金流量净额',
-            indicatorCode: 'Czhdcsdxjlje',
+            indicatorCode: 'czhdcsdxjlje',
             unit: '亿'
         },
         {
             indicatorName: '汇率变动对现金及现金等价物的影响',
-            indicatorCode: 'Hlbddxjjxjdjwdyx',
+            indicatorCode: 'hlbddxjjxjdjwdyx',
             unit: '亿'
         },
         {
             indicatorName: '现金及现金等价物净增加额',
-            indicatorCode: 'Xjjxjdjwjezj',
+            indicatorCode: 'xjjxjdjwjezj',
             unit: '亿'
         },
         {
             indicatorName: '加：期初现金及现金等价物余额',
-            indicatorCode: 'Qcxjjxjdjwye',
+            indicatorCode: 'qcxjjxjdjwye',
             unit: '亿'
         },
         {
             indicatorName: '期末现金及现金等价物余额',
-            indicatorCode: 'Qmxjjxjdjwye',
+            indicatorCode: 'qmxjjxjdjwye',
             unit: '亿'
         }
     ]

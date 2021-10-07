@@ -44,8 +44,8 @@ function findSectorStocks({sectorName}) {
     return stockList
 }
 
-function listStocksData({stocks, report, indicator}) {
-    const sql = `select ${indicator},term from ${report} where stock_code = '${stocks[0]}'`
+function listStocksData({stocks, report, indicator, term}) {
+    const sql = `select ${indicator},term from ${report} where stock_code = '${stocks[0]}' and term like '%${term}' order by term desc limit 10`
     const res = db.exec(sql)
 
     console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
@@ -55,7 +55,17 @@ function listStocksData({stocks, report, indicator}) {
 
     const stockDataList = transfer(res)
     console.log(stockDataList)
-    return stockDataList
+
+    const terms = new Set()
+    const indicators = []
+    stockDataList.forEach(item => {
+        terms.add(item.term)
+        indicators.push(item[indicator])
+    })
+    const data = {term: terms, indicators: {}}
+    data.indicators[stocks[0]] = indicators
+    console.log(data)
+    return data
 }
 
 function transfer(res) {
@@ -65,7 +75,8 @@ function transfer(res) {
     for (let i = 0; i < values.length; i++) {
         let obj = {}
         for (let j = 0; j < columns.length; j++) {
-            obj[StringUtils.toCamel(columns[j])] = values[i][j]
+            // obj[StringUtils.toCamel(columns[j])] = values[i][j]
+            obj[columns[j]] = values[i][j]
         }
         objList.push(obj)
     }

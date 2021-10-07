@@ -12,7 +12,8 @@ function SearchBar(props) {
     let [stockB, setStockB] = useState('')
     let [stockC, setStockC] = useState('')
     let [sector, setSector] = useState('')
-    let [term, setTerm] = useState('')
+    let [term, setTerm] = useState('Q4')
+    let [yearRange, setYearRange] = useState('21,20,19,18,17')
 
     const sectorOptions = []
     if (sectorList) {
@@ -87,11 +88,17 @@ function SearchBar(props) {
                         </Select>
                     </Col>
                     <Col span={2}>
-                        <Select style={{width: '100%'}} placeholder="报告期" onChange={setTerm}>
+                        <Select style={{width: '100%'}} defaultValue={term} placeholder="财报" onChange={setTerm}>
                             <Select.Option value='Q1'>一季报</Select.Option>
                             <Select.Option value='Q2'>半年报</Select.Option>
                             <Select.Option value='Q3'>三季报</Select.Option>
                             <Select.Option value='Q4'>年报</Select.Option>
+                        </Select>
+                    </Col>
+                    <Col span={2}>
+                        <Select style={{width: '100%'}} defaultValue={yearRange} placeholder="范围" onChange={setYearRange}>
+                            <Select.Option value='21,20,19,18,17'>近5年</Select.Option>
+                            <Select.Option value='21,20,19,18,17,16,15,14,13,12'>近10年</Select.Option>
                         </Select>
                     </Col>
                     <Col span={4}>
