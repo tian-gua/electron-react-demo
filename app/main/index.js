@@ -6,7 +6,7 @@ const handleIPC = require('./ipc')
 let win
 app.on('ready', () => {
     win = new BrowserWindow({
-        width: 800,
+        width: 1200,
         height: 600,
         webPreferences: {
             nodeIntegration: true,

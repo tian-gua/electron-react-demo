@@ -5,20 +5,22 @@ import * as echarts from "echarts"
 import {Select, Row, Col} from "antd";
 import indicatorMap from "./Indicator"
 
+const {ipcRenderer} = window.require('electron')
+
 function Chart(props) {
     const [report, setReport] = useState(props.report)
+    const [indicator, setIndicator] = useState(props.defaultIndicator)
+    if (!indicatorMap[report].some(item => item.indicatorCode === indicator) && indicator !== '') {
+        setIndicator('')
+    }
 
     const indicatorOptions = []
     const indicators = indicatorMap[report]
     indicators.forEach(item => {
-        indicatorOptions.push(<Select.Option value={item.indicatorName}>{item.indicatorCode}</Select.Option>)
+        indicatorOptions.push(<Select.Option value={item.indicatorCode}>{item.indicatorName}</Select.Option>)
     })
 
     const chartId = 'chart-' + props.chartId
-    let indicator = props.indicator
-    if (!indicatorMap[report].some(item => item.indicatorName === indicator)) {
-        indicator = ''
-    }
 
     useEffect(() => {
         console.log('渲染图表:', chartId)
@@ -43,18 +45,26 @@ function Chart(props) {
             }
         )
     }, [])
+
+    const selectIndicator = async () => {
+        await ipcRenderer.invoke('query', 'list-stocks-data', {report, indicator})
+    }
     return <div style={{width: '100%', height: '400px'}}>
         <Row>
-            <Col span={12}>
-                <Select placeholder="报表" defaultValue={props.report} style={{width: 100}} onChange={(v) => setReport(v)}>
+            <Col span={8}>
+                <Select placeholder="报表" defaultValue={props.report} style={{width: 100}}
+                        onChange={(v) => {
+                            setReport(v);
+                            setIndicator('')
+                        }}>
                     <Select.Option value='zyzb'>主要指标</Select.Option>
                     <Select.Option value='lrb'>利润表</Select.Option>
                     <Select.Option value='zcfzb'>资产负债表</Select.Option>
                     <Select.Option value='xjllb'>现金流量表</Select.Option>
                 </Select>
             </Col>
-            <Col span={12}>
-                <Select placeholder="指标" defaultValue={indicator} style={{width: 100}}>
+            <Col span={16}>
+                <Select placeholder="指标" value={indicator} style={{width: 200}} onSelect={(v) => setIndicator(v)}>
                     {indicatorOptions}
                 </Select>
             </Col>

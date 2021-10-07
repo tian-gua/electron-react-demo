@@ -44,8 +44,8 @@ function findSectorStocks({sectorName}) {
     return stockList
 }
 
-function listStocksData({stocks, indicator}) {
-    const sql = `select ${indicator},term from zyzb where stock_code = '${stocks[0]}'`
+function listStocksData({stocks, report, indicator}) {
+    const sql = `select ${indicator},term from ${report} where stock_code = '${stocks[0]}'`
     const res = db.exec(sql)
 
     console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)

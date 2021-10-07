@@ -12,6 +12,7 @@ function SearchBar(props) {
     let [stockB, setStockB] = useState('')
     let [stockC, setStockC] = useState('')
     let [sector, setSector] = useState('')
+    let [term, setTerm] = useState('')
 
     const sectorOptions = []
     if (sectorList) {
@@ -42,7 +43,7 @@ function SearchBar(props) {
             message.info('请选择标的');
             return
         }
-        const res = await ipcRenderer.invoke('query', 'list-stocks-data', {stocks, indicator: 'jlr'})
+        const res = await ipcRenderer.invoke('query', 'list-stocks-data', {stocks, report: 'jlr'})
         setStockData(res)
     }
 
@@ -85,7 +86,15 @@ function SearchBar(props) {
                             {stockOptions}
                         </Select>
                     </Col>
-                    <Col span={8}>
+                    <Col span={2}>
+                        <Select style={{width: '100%'}} placeholder="报告期" onChange={setTerm}>
+                            <Select.Option value='Q1'>一季报</Select.Option>
+                            <Select.Option value='Q2'>半年报</Select.Option>
+                            <Select.Option value='Q3'>三季报</Select.Option>
+                            <Select.Option value='Q4'>年报</Select.Option>
+                        </Select>
+                    </Col>
+                    <Col span={4}>
                         <Button size="large" type="primary" shape="round" style={{marginRight: 10}}
                                 onClick={quickSearch}>快速比较</Button>
                         <Button size="large" type="danger" shape="round" onClick={clearSearch}>清空</Button>
