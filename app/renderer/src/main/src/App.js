@@ -1,13 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
 import './global.css'
 import Home from './components/Home'
 
+import {Provider} from 'react-redux'
+import {createStore} from "redux";
+import reducer from 'store/reducer'
+
+let store = createStore(reducer, {
+    stockA: '',
+    stockB: '',
+    stockC: ''
+})
+
 function App() {
     return (
-        <div className="App">
-            <Home/>
-        </div>
+        <Provider store={store}>
+            <div className="App">
+                <Home/>
+            </div>
+        </Provider>
     );
 }
 

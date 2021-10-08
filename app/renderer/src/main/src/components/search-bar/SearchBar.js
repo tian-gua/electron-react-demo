@@ -1,5 +1,7 @@
 import '../../global.css'
 import {useState} from "react";
+import {useSelector} from 'react-redux'
+
 import {Button, Col, Divider, Input, Row, Select, message, Form} from 'antd'
 
 const {Option} = Select
@@ -8,7 +10,9 @@ const {ipcRenderer} = window.require('electron')
 
 function SearchBar(props) {
     let {sectorList, sectorStocks, setSectorStocks, setStockData} = props
-    let [stockA, setStockA] = useState('')
+
+    const stockA = useSelector(state => state.stockA)
+    // let [stockA, setStockA] = useState('')
     let [stockB, setStockB] = useState('')
     let [stockC, setStockC] = useState('')
     let [sector, setSector] = useState('')
@@ -96,7 +100,8 @@ function SearchBar(props) {
                         </Select>
                     </Col>
                     <Col span={2}>
-                        <Select style={{width: '100%'}} defaultValue={yearRange} placeholder="范围" onChange={setYearRange}>
+                        <Select style={{width: '100%'}} defaultValue={yearRange} placeholder="范围"
+                                onChange={setYearRange}>
                             <Select.Option value='21,20,19,18,17'>近5年</Select.Option>
                             <Select.Option value='21,20,19,18,17,16,15,14,13,12'>近10年</Select.Option>
                         </Select>
