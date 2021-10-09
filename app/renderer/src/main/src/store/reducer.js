@@ -1,4 +1,5 @@
 const reducer = (state, action) => {
+    console.log('dispatch:', JSON.stringify(action))
     switch (action.type) {
         case 'changeStockA':
             return {...state, stockA: action.payload}
@@ -10,3 +11,5 @@ const reducer = (state, action) => {
             return state
     }
 }
+
+export default reducer

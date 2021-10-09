@@ -1,5 +1,6 @@
 import '../../global.css'
 
+import {useSelector} from 'react-redux'
 import {useState, useEffect} from "react";
 import * as echarts from "echarts"
 import {Select, Row, Col} from "antd";
@@ -8,6 +9,10 @@ import indicatorMap from "./Indicator"
 const {ipcRenderer} = window.require('electron')
 
 function Chart(props) {
+    const stockA = useSelector(state => state.stockA)
+    const stockB = useSelector(state => state.stockB)
+    const stockC = useSelector(state => state.stockC)
+
     const [report, setReport] = useState(props.report)
     const [indicator, setIndicator] = useState(props.defaultIndicator)
     if (!indicatorMap[report].some(item => item.indicatorCode === indicator) && indicator !== '') {
@@ -49,7 +54,12 @@ function Chart(props) {
 
     const selectIndicator = async (v) => {
         setIndicator(v)
-        const res = await ipcRenderer.invoke('query', 'list-stocks-data', {stocks: ['SZ002463'], report, indicator: v, term: 'Q4'})
+        const res = await ipcRenderer.invoke('query', 'list-stocks-data', {
+            stocks: [stockA, stockB, stockC],
+            report,
+            indicator: v,
+            term: 'Q4'
+        })
         console.log('指标: ', res)
     }
     return <div style={{width: '100%', height: '400px'}}>

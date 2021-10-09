@@ -75,8 +75,8 @@ function transfer(res) {
     for (let i = 0; i < values.length; i++) {
         let obj = {}
         for (let j = 0; j < columns.length; j++) {
-            // obj[StringUtils.toCamel(columns[j])] = values[i][j]
-            obj[columns[j]] = values[i][j]
+            obj[StringUtils.toCamel(columns[j])] = values[i][j]
+            // obj[columns[j]] = values[i][j]
         }
         objList.push(obj)
     }

@@ -1,6 +1,6 @@
 import '../../global.css'
 import {useState} from "react";
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 
 import {Button, Col, Divider, Row, Select, message, Form} from 'antd'
 
@@ -12,9 +12,12 @@ function SearchBar(props) {
     let {sectorList, sectorStocks, setSectorStocks, setStockData} = props
 
     const stockA = useSelector(state => state.stockA)
+    const stockB = useSelector(state => state.stockB)
+    const stockC = useSelector(state => state.stockC)
+    const dispatch = useDispatch()
     // let [stockA, setStockA] = useState('')
-    let [stockB, setStockB] = useState('')
-    let [stockC, setStockC] = useState('')
+    // let [stockB, setStockB] = useState('')
+    // let [stockC, setStockC] = useState('')
     let [sector, setSector] = useState('')
     let [term, setTerm] = useState('Q4')
     let [yearRange, setYearRange] = useState('21,20,19,18,17')
@@ -77,17 +80,20 @@ function SearchBar(props) {
                         </Form.Item>
                     </Col>
                     <Col span={4}>
-                        <Select style={{width: '100%'}} placeholder="股票A" onChange={setStockA}>
+                        <Select style={{width: '100%'}} placeholder="股票A"
+                                onChange={item => dispatch({type: 'changeStockA', payload: item})}>
                             {stockOptions}
                         </Select>
                     </Col>
                     <Col span={4}>
-                        <Select style={{width: '100%'}} placeholder="股票B" onChange={setStockB}>
+                        <Select style={{width: '100%'}} placeholder="股票B"
+                                onChange={item => dispatch({type: 'changeStockB', payload: item})}>
                             {stockOptions}
                         </Select>
                     </Col>
                     <Col span={4}>
-                        <Select style={{width: '100%'}} placeholder="股票C" onChange={setStockC}>
+                        <Select style={{width: '100%'}} placeholder="股票C"
+                                onChange={item => dispatch({type: 'changeStockC', payload: item})}>
                             {stockOptions}
                         </Select>
                     </Col>
