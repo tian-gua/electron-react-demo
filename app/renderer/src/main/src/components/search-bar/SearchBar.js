@@ -2,7 +2,7 @@ import '../../global.css'
 import {useState} from "react";
 import {useSelector} from 'react-redux'
 
-import {Button, Col, Divider, Input, Row, Select, message, Form} from 'antd'
+import {Button, Col, Divider, Row, Select, message, Form} from 'antd'
 
 const {Option} = Select
 
