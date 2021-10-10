@@ -7,6 +7,8 @@ const reducer = (state, action) => {
             return {...state, stockB: action.payload}
         case 'changeStockC':
             return {...state, stockC: action.payload}
+        case 'changeStockData':
+            return {...state, stockData: action.stockData}
         default:
             return state
     }

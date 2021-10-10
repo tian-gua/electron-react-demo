@@ -9,7 +9,8 @@ import reducer from './store/reducer'
 let store = createStore(reducer, {
     stockA: '',
     stockB: '',
-    stockC: ''
+    stockC: '',
+    stockData: {}
 })
 
 function App() {

@@ -1,42 +1,56 @@
 import '../../global.css'
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {useSelector, useDispatch} from 'react-redux'
 
 import {Button, Col, Divider, Row, Select, message, Form} from 'antd'
 
-const {Option} = Select
-
 const {ipcRenderer} = window.require('electron')
 
-function SearchBar(props) {
-    let {sectorList, sectorStocks, setSectorStocks, setStockData} = props
+function SearchBar() {
+    console.log('渲染SearchBar')
+    const [selectedSector, setSelectedSector] = useState(undefined)
+    const [term, setTerm] = useState('Q4')
+    const [yearRange, setYearRange] = useState('21,20,19,18,17')
+    const [sectorStocks, setSectorStocks] = useState([])
+    const [sectorList, setSectorList] = useState([])
 
     const stockA = useSelector(state => state.stockA)
     const stockB = useSelector(state => state.stockB)
     const stockC = useSelector(state => state.stockC)
     const dispatch = useDispatch()
-    // let [stockA, setStockA] = useState('')
-    // let [stockB, setStockB] = useState('')
-    // let [stockC, setStockC] = useState('')
-    let [sector, setSector] = useState('')
-    let [term, setTerm] = useState('Q4')
-    let [yearRange, setYearRange] = useState('21,20,19,18,17')
 
-    const sectorOptions = []
+    let sectorOptions
     if (sectorList) {
-        for (const item of sectorList) {
-            sectorOptions.push(<Option key={item.sectorName} value={item.sectorName}>{item.sectorName}</Option>)
-        }
+        sectorOptions = sectorList.map(item => {
+            return {value: item.sectorName}
+        })
     }
 
-    const stockOptions = []
+    let stockOptions = []
     if (sectorStocks) {
-        for (const item of sectorStocks) {
-            stockOptions.push(<Option key={item.stockCode} value={item.stockCode}>{item.stockName}</Option>)
-        }
+        stockOptions = sectorStocks.map(item => {
+            return {key: item.stockCode, label: item.stockName, value: item.stockCode}
+        })
     }
+
+    useEffect(async () => {
+        console.log('查询所有板块')
+        console.log('send channel: find-all-sectors')
+        const res = await ipcRenderer.invoke('query', 'find-all-sectors')
+        setSectorList(res)
+    }, [])
+
+    useEffect(async () => {
+        console.log('选择板块: ', selectedSector)
+        if (!selectedSector || selectedSector === '') {
+            return
+        }
+        const res = await ipcRenderer.invoke('query', 'find-sector-stocks', {sector: selectedSector})
+        setSectorStocks(res)
+    }, [selectedSector])
 
     const quickSearch = async () => {
+        console.log('快速查询')
         let stocks = []
         if (stockA) {
             stocks.push(stockA)
@@ -52,53 +66,55 @@ function SearchBar(props) {
             return
         }
         const res = await ipcRenderer.invoke('query', 'list-stocks-data', {stocks, report: 'jlr'})
-        setStockData(res)
+        dispatch({type: 'changeStockData', payload: res})
     }
 
     const [form] = Form.useForm()
     const clearSearch = async () => {
-        form.resetFields()
+        // form.resetFields()
+        setSelectedSector(undefined)
+        setTerm('Q4')
+        dispatch({type: 'changeStockA', payload: ''})
+        dispatch({type: 'changeStockB', payload: ''})
+        dispatch({type: 'changeStockC', payload: ''})
     }
 
-    const selectSector = async (sectorName) => {
-        if (!sectorName) {
-            return
-        }
-
-        const res = await ipcRenderer.invoke('query', 'find-sector-stocks', {sectorName})
-        setSectorStocks(res)
-    }
     return (
         <div style={{height: 80, paddingTop: '20px', paddingLeft: '10px', overflow: 'hidden'}}>
             <Form form={form}>
                 <Row gutter={[10, 10]}>
                     <Col span={4}>
-                        <Form.Item name='sector'>
-                            <Select style={{width: '100%'}} placeholder="板块" onChange={selectSector} allowClear={true}>
-                                {sectorOptions}
-                            </Select>
-                        </Form.Item>
+                        <Select style={{width: '100%'}}
+                                placeholder="板块"
+                                value={selectedSector}
+                                onSelect={item => setSelectedSector(item)}
+                                options={sectorOptions}/>
                     </Col>
                     <Col span={4}>
-                        <Select style={{width: '100%'}} placeholder="股票A"
-                                onChange={item => dispatch({type: 'changeStockA', payload: item})}>
-                            {stockOptions}
-                        </Select>
+                        <Select style={{width: '100%'}}
+                                placeholder="股票A"
+                                value={stockA}
+                                disabled={!!selectedSector}
+                                onChange={item => dispatch({type: 'changeStockA', payload: item})}
+                                options={stockOptions}/>
                     </Col>
                     <Col span={4}>
-                        <Select style={{width: '100%'}} placeholder="股票B"
-                                onChange={item => dispatch({type: 'changeStockB', payload: item})}>
-                            {stockOptions}
-                        </Select>
+                        <Select style={{width: '100%'}}
+                                placeholder="股票B"
+                                value={stockB}
+                                disabled={!!selectedSector}
+                                onChange={item => dispatch({type: 'changeStockB', payload: item})}
+                                options={stockOptions}/>
                     </Col>
                     <Col span={4}>
                         <Select style={{width: '100%'}} placeholder="股票C"
-                                onChange={item => dispatch({type: 'changeStockC', payload: item})}>
-                            {stockOptions}
-                        </Select>
+                                value={stockC}
+                                disabled={!!selectedSector}
+                                onChange={item => dispatch({type: 'changeStockC', payload: item})}
+                                options={stockOptions}/>
                     </Col>
                     <Col span={2}>
-                        <Select style={{width: '100%'}} defaultValue={term} placeholder="财报" onChange={setTerm}>
+                        <Select style={{width: '100%'}} value={term} placeholder="财报" onChange={setTerm}>
                             <Select.Option value='Q1'>一季报</Select.Option>
                             <Select.Option value='Q2'>半年报</Select.Option>
                             <Select.Option value='Q3'>三季报</Select.Option>

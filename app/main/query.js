@@ -31,8 +31,8 @@ function findAllSectors() {
     return sectorList
 }
 
-function findSectorStocks({sectorName}) {
-    const sql = 'select * from sector where sector_name = \'' + sectorName + '\''
+function findSectorStocks({sector}) {
+    const sql = 'select * from sector where sector_name = \'' + sector + '\''
     const res = db.exec(sql)
 
     console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
