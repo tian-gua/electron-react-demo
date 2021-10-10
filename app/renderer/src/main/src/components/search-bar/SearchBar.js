@@ -92,6 +92,7 @@ function SearchBar() {
                     </Col>
                     <Col span={4}>
                         <Select style={{width: '100%'}}
+                                type="primary"
                                 placeholder="股票A"
                                 value={stockA}
                                 disabled={!selectedSector}
@@ -107,7 +108,8 @@ function SearchBar() {
                                 options={stockOptions}/>
                     </Col>
                     <Col span={4}>
-                        <Select style={{width: '100%'}} placeholder="股票C"
+                        <Select style={{width: '100%'}}
+                                placeholder="股票C"
                                 value={stockC}
                                 disabled={!selectedSector}
                                 onChange={item => dispatch({type: 'changeStockC', payload: item})}

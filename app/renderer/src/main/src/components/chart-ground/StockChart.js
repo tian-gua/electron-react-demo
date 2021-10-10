@@ -1,38 +1,48 @@
 import '../../global.css'
 
-import {Card, Col, Row} from 'antd'
+import {Card, Button, Col, Row} from 'antd'
+import {AppstoreAddOutlined} from '@ant-design/icons';
 import Chart from "./Chart";
-import {useState} from "react";
 
+import {useState, useEffect} from "react";
 
 function StockChart() {
-    return <div style={{width: '95%', margin: 'auto auto'}}>
-        <Row gutter={[20, 20]}>
-            <Col span={12}>
+    const [cols, setCols] = useState([])
+    const [chartIndex, setChartIndex] = useState(0)
+
+    useEffect(() => {
+        const newCols = []
+        for (let i = 1; i < chartIndex + 1; i++) {
+            newCols.push(<Col key={i} span={12}>
                 <Card bordered={true} style={{width: '100%', height: 400}}>
-                    <Chart chartId={1} report='zyzb' defaultIndicator='jlr'/>
+                    <Chart chartId={i} report='zyzb' defaultIndicator='jlr'/>
                 </Card>
-            </Col>
+            </Col>)
+        }
+        setCols(newCols)
+    }, [chartIndex])
+
+
+    return <div style={{width: '95%', margin: 'auto auto', padding: 20}}>
+        <Row gutter={[20, 20]}>
+            {cols}
             <Col span={12}>
-                <Card bordered={true} style={{width: '100%', height: 400}}/>
-            </Col>
-            <Col span={12}>
-                <Card bordered={true} style={{width: '100%', height: 500}}/>
-            </Col>
-            <Col span={12}>
-                <Card bordered={true} style={{width: '100%', height: 300}}/>
-            </Col>
-            <Col span={12}>
-                <Card bordered={true} style={{width: '100%', height: 300}}/>
-            </Col>
-            <Col span={12}>
-                <Card bordered={true} style={{width: '100%', height: 300}}/>
-            </Col>
-            <Col span={12}>
-                <Card bordered={true} style={{width: '100%', height: 300}}/>
-            </Col>
-            <Col span={12}>
-                <Card bordered={true} style={{width: '100%', height: 300}}/>
+                <Card bordered={false} style={{width: '100%', height: 400}}>
+                    <div style={{width: '100%', height: 370}}>
+                        <Button type='primary'
+                                shape='circle'
+                                style={{
+                                    marginTop: 150,
+                                    width: 100,
+                                    height: 100,
+                                    fontSize: 50
+                                }}
+                                onClick={() => {
+                                    setChartIndex(chartIndex + 1)
+                                }}
+                        ><AppstoreAddOutlined/></Button>
+                    </div>
+                </Card>
             </Col>
         </Row>
     </div>
