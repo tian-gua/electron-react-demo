@@ -3,7 +3,7 @@ import '../../global.css'
 import {useSelector} from 'react-redux'
 import {useState, useEffect} from "react";
 import * as echarts from "echarts"
-import {Select, Row, Col} from "antd";
+import {Select, Row, Col, message} from "antd";
 import indicatorMap from "./Indicator"
 
 const {ipcRenderer} = window.require('electron')
@@ -53,9 +53,23 @@ function Chart(props) {
     }, [])
 
     const selectIndicator = async (v) => {
+        let stocks = []
+        if (stockA) {
+            stocks.push(stockA)
+        }
+        if (stockB) {
+            stocks.push(stockB)
+        }
+        if (stockC) {
+            stocks.push(stockC)
+        }
+        if (!stocks || stocks.length === 0) {
+            message.info('请选择标的');
+            return
+        }
         setIndicator(v)
         const res = await ipcRenderer.invoke('query', 'list-stocks-data', {
-            stocks: [stockA, stockB, stockC],
+            stocks: stocks,
             report,
             indicator: v,
             term: 'Q4'
