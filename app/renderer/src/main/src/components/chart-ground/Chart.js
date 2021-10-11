@@ -9,10 +9,10 @@ import indicatorMap from "./Indicator"
 const {ipcRenderer} = window.require('electron')
 
 function Chart(props) {
-    const stockA = useSelector(state => state.stockA)
-    const stockB = useSelector(state => state.stockB)
-    const stockC = useSelector(state => state.stockC)
+    const stocks = useSelector(state => state.stocks)
+    // const reportData = useSelector(state => state.reportData)
 
+    const [reportData, setReportData] = useState(undefined)
     const [report, setReport] = useState(props.report)
     const [indicator, setIndicator] = useState(props.defaultIndicator)
     if (!indicatorMap[report].some(item => item.indicatorCode === indicator) && indicator !== '') {
@@ -29,18 +29,21 @@ function Chart(props) {
     const chartId = 'chart-' + props.chartId
 
     useEffect(() => {
-        console.log('渲染图表:', chartId)
+        if (!reportData) {
+            return
+        }
+        console.log('渲染图表:', chartId);
         const chart = echarts.init(document.getElementById(chartId))
         chart.setOption({
                 legend: {},
                 tooltip: {},
                 dataset: {
+                    dimensions: ['data', ...(reportData.term)],
                     source: [
-                        ['报告期', '21Q1', '21Q2', '21Q3'],
-                        ['Matcha Latte', 43.3, 85.8, 93.7],
-                        ['Milk Tea', 83.1, 73.4, 55.1],
-                        ['Cheese Cocoa', 86.4, 65.2, 82.5],
-                        ['Walnut Brownie', 72.5, 53.8, 39.1]
+                        {data: 'Matcha Latte', 2015: 43.3, 2016: 85.8, 2017: 93.7},
+                        {data: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1},
+                        {data: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5},
+                        {data: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1}
                     ]
                 },
                 xAxis: {type: 'category'},
@@ -50,31 +53,22 @@ function Chart(props) {
                 series: [{type: 'bar'}, {type: 'bar'}, {type: 'bar'}]
             }
         )
-    }, [])
+    }, [reportData])
 
     const selectIndicator = async (v) => {
-        let stocks = []
-        if (stockA) {
-            stocks.push(stockA)
-        }
-        if (stockB) {
-            stocks.push(stockB)
-        }
-        if (stockC) {
-            stocks.push(stockC)
-        }
         if (!stocks || stocks.length === 0) {
             message.info('请选择标的');
             return
         }
         setIndicator(v)
         const res = await ipcRenderer.invoke('query', 'list-stocks-data', {
-            stocks: stocks,
+            stocks: [...stocks],
             report,
             indicator: v,
             term: 'Q4'
         })
         console.log('指标: ', res)
+        setReportData(res)
     }
     return <div style={{width: '100%', height: '400px'}}>
         <Row>

@@ -7,11 +7,9 @@ import {createStore} from "redux";
 import reducer from './store/reducer'
 
 let store = createStore(reducer, {
-    stockA: '',
-    stockB: '',
-    stockC: '',
+    stocks: new Set(),
     chartIndex: 0,
-    stockData: {}
+    reportData: {}
 })
 
 function App() {

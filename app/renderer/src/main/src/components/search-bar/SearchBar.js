@@ -1,6 +1,6 @@
 import '../../global.css'
 import {useState, useEffect} from "react";
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 
 import {Button, Col, Divider, Row, Select, message, Form} from 'antd'
 
@@ -13,10 +13,10 @@ function SearchBar() {
     const [yearRange, setYearRange] = useState('21,20,19,18,17')
     const [sectorStocks, setSectorStocks] = useState([])
     const [sectorList, setSectorList] = useState([])
+    const [stockA, setStockA] = useState(undefined)
+    const [stockB, setStockB] = useState(undefined)
+    const [stockC, setStockC] = useState(undefined)
 
-    const stockA = useSelector(state => state.stockA)
-    const stockB = useSelector(state => state.stockB)
-    const stockC = useSelector(state => state.stockC)
     const dispatch = useDispatch()
 
     let sectorOptions
@@ -74,12 +74,15 @@ function SearchBar() {
         // form.resetFields()
         setSelectedSector(undefined)
         setTerm('Q4')
-        dispatch({type: 'changeStockA', payload: ''})
-        dispatch({type: 'changeStockB', payload: ''})
-        dispatch({type: 'changeStockC', payload: ''})
+        setStockA(undefined)
+        setStockB(undefined)
+        setStockC(undefined)
         dispatch({type: 'changeChartIndex', payload: 0})
     }
 
+    const addStock = (item) => {
+        dispatch({type: 'addStock', payload: item})
+    }
     return (
         <div style={{height: 80, paddingTop: '20px', paddingLeft: '10px', overflow: 'hidden'}}>
             <Form form={form}>
@@ -97,7 +100,10 @@ function SearchBar() {
                                 placeholder="股票A"
                                 value={stockA}
                                 disabled={!selectedSector}
-                                onChange={item => dispatch({type: 'changeStockA', payload: item})}
+                                onChange={item => {
+                                    setStockA(item)
+                                    addStock(item)
+                                }}
                                 options={stockOptions}/>
                     </Col>
                     <Col span={4}>
@@ -105,7 +111,10 @@ function SearchBar() {
                                 placeholder="股票B"
                                 value={stockB}
                                 disabled={!selectedSector}
-                                onChange={item => dispatch({type: 'changeStockB', payload: item})}
+                                onChange={item => {
+                                    setStockB(item)
+                                    addStock(item)
+                                }}
                                 options={stockOptions}/>
                     </Col>
                     <Col span={4}>
@@ -113,7 +122,10 @@ function SearchBar() {
                                 placeholder="股票C"
                                 value={stockC}
                                 disabled={!selectedSector}
-                                onChange={item => dispatch({type: 'changeStockC', payload: item})}
+                                onChange={item => {
+                                    setStockC(item)
+                                    addStock(item)
+                                }}
                                 options={stockOptions}/>
                     </Col>
                     <Col span={2}>
