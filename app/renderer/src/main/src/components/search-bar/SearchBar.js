@@ -77,6 +77,7 @@ function SearchBar() {
         dispatch({type: 'changeStockA', payload: ''})
         dispatch({type: 'changeStockB', payload: ''})
         dispatch({type: 'changeStockC', payload: ''})
+        dispatch({type: 'changeChartIndex', payload: 0})
     }
 
     return (

@@ -10,6 +10,7 @@ let store = createStore(reducer, {
     stockA: '',
     stockB: '',
     stockC: '',
+    chartIndex: 0,
     stockData: {}
 })
 

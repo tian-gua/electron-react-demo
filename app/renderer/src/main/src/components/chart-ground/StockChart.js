@@ -5,10 +5,13 @@ import {AppstoreAddOutlined} from '@ant-design/icons';
 import Chart from "./Chart";
 
 import {useState, useEffect} from "react";
+import {useSelector, useDispatch} from 'react-redux'
+
 
 function StockChart() {
     const [cols, setCols] = useState([])
-    const [chartIndex, setChartIndex] = useState(0)
+    const chartIndex = useSelector(state => state.chartIndex)
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const newCols = []
@@ -38,7 +41,7 @@ function StockChart() {
                                     fontSize: 50
                                 }}
                                 onClick={() => {
-                                    setChartIndex(chartIndex + 1)
+                                    dispatch({type: 'changeChartIndex', payload: chartIndex + 1})
                                 }}
                         ><AppstoreAddOutlined/></Button>
                     </div>

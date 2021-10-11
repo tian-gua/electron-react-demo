@@ -9,6 +9,8 @@ const reducer = (state, action) => {
             return {...state, stockC: action.payload}
         case 'changeStockData':
             return {...state, stockData: action.stockData}
+        case 'changeChartIndex':
+            return {...state, chartIndex: action.payload}
         default:
             return state
     }
