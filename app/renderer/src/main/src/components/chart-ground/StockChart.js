@@ -1,6 +1,6 @@
 import '../../global.css'
 
-import {Card, Button, Col, Row} from 'antd'
+import {Card, Button, Col, Row, message} from 'antd'
 import {AppstoreAddOutlined} from '@ant-design/icons';
 import Chart from "./Chart";
 
@@ -11,6 +11,7 @@ import {useSelector, useDispatch} from 'react-redux'
 function StockChart() {
     const [cols, setCols] = useState([])
     const chartIndex = useSelector(state => state.chartIndex)
+    const stocks = useSelector(state => state.stocks)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -31,7 +32,7 @@ function StockChart() {
             {cols}
             <Col span={12}>
                 <Card bordered={false} style={{width: '100%', height: 400}}>
-                    <div style={{width: '100%', height: 370}}>
+                    <div style={{width: '80%', height: 370}}>
                         <Button type='primary'
                                 shape='circle'
                                 style={{
@@ -40,7 +41,12 @@ function StockChart() {
                                     height: 100,
                                     fontSize: 50
                                 }}
-                                onClick={() => {
+                                onClick={async () => {
+                                    if (!stocks || stocks.size === 0) {
+                                        message.info('请选择标的');
+                                        return
+                                    }
+                                    console.log(stocks)
                                     dispatch({type: 'changeChartIndex', payload: chartIndex + 1})
                                 }}
                         ><AppstoreAddOutlined/></Button>

@@ -824,4 +824,4 @@ const indicator = {
     ]
 }
 
-module.exports = indicator
+export default indicator

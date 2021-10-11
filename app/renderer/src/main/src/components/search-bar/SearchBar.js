@@ -78,6 +78,7 @@ function SearchBar() {
         setStockB(undefined)
         setStockC(undefined)
         dispatch({type: 'changeChartIndex', payload: 0})
+        dispatch({type: 'initStocks'})
     }
 
     const addStock = (item) => {

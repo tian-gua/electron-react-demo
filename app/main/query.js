@@ -1,7 +1,8 @@
 const StringUtils = require('../utils/StringUtils')
-const fs = require('fs')
+
 const initSqlJs = require('sql.js')
-var path = require('path');
+const fs = require('fs')
+const path = require('path');
 const fileBuffer = fs.readFileSync(path.join(__dirname, '../db/stock.sqlite'))
 
 let db
@@ -45,7 +46,7 @@ function findSectorStocks({sector}) {
 }
 
 function listStocksData({stocks, report, indicator, term}) {
-    const sql = `select ${indicator},term from ${report} where stock_code = '${stocks[0]}' and term like '%${term}' order by term desc limit 10`
+    const sql = `select stock_code,${indicator},term from ${report} where stock_code = '${stocks[0]}' and term like '%${term}' order by term desc limit 10`
     const res = db.exec(sql)
 
     console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
@@ -56,15 +57,11 @@ function listStocksData({stocks, report, indicator, term}) {
     const stockDataList = transfer(res)
     console.log(stockDataList)
 
-    const terms = new Set()
-    const indicators = []
+    const data = []
     stockDataList.forEach(item => {
-        terms.add(item.term)
-        indicators.push(item[indicator])
+        data.push({data: item.term, [item.stockCode]: item[indicator]})
     })
-    const data = {term: terms, indicators: {}}
-    data.indicators[stocks[0]] = indicators
-    console.log(data)
+
     return data
 }
 

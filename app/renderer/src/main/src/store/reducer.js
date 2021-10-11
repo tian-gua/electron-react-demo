@@ -1,6 +1,8 @@
 const reducer = (state, action) => {
     console.log('dispatch:', JSON.stringify(action))
     switch (action.type) {
+        case 'initStocks':
+            return {...state, stocks: new Set()}
         case 'addStock':
             const stockSet = state.stocks
             stockSet.add(action.payload)
