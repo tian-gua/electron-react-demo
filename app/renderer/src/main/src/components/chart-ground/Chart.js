@@ -33,20 +33,20 @@ function Chart(props) {
             return
         }
         console.log('渲染图表: ', chartId)
-        console.log('图标数据: ', reportData)
+        console.log('图标数据: ', ...stocks, ':', reportData)
         const chart = echarts.init(document.getElementById(chartId))
         chart.setOption({
                 legend: {},
                 tooltip: {},
                 dataset: {
-                    dimensions: ['data', ...stocks],
+                    dimensions: ['term', ...stocks],
                     source: [...reportData]
                 },
                 xAxis: {type: 'category'},
                 yAxis: {},
                 // Declare several bar series, each will be mapped
                 // to a column of dataset.source by default.
-                series: [{type: 'bar'}]
+                series: [{type: 'bar'},{type: 'bar'},{type: 'bar'}]
             }
         )
     }, [reportData])

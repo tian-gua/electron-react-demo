@@ -41,8 +41,6 @@ function findSectorStocks({sector}) {
 }
 
 function listStocksData({stocks, report, indicator, term}) {
-    const data = []
-
     const stocksDataMap = new Map()
     if (stocks) {
         stocks.forEach(stockItem => {
@@ -57,15 +55,17 @@ function listStocksData({stocks, report, indicator, term}) {
             const stockItemData = transfer(res)
             stockItemData.reverse().forEach(item => {
                 if (stocksDataMap.has(item.term)) {
-                    stocksDataMap[item.term] = stocksDataMap.get(item.term)[stockItem] = item[indicator]
+                    stocksDataMap.get(item.term)[stockItem] = item[indicator]
                 } else {
-                    stocksDataMap[item.term] = {term: item.term, [stockItem]: item[indicator]}
+                    stocksDataMap.set(item.term, {term: item.term, [stockItem]: item[indicator]})
                 }
             })
         })
     }
 
-    console.log("stockData: ", stocksDataMap)
+    // console.log("stockData: ", stocksDataMap)
+    const data = [...stocksDataMap.values()].sort((i1, i2) => i1.term.localeCompare(i2.term))
+    console.log("data: ", data)
     return data
 }
 
