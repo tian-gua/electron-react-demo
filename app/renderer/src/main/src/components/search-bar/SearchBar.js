@@ -111,7 +111,7 @@ function SearchBar() {
                         <Select style={{width: '100%'}}
                                 placeholder="股票B"
                                 value={stockB}
-                                disabled={!selectedSector}
+                                disabled={!stockA}
                                 onChange={item => {
                                     setStockB(item)
                                     addStock(item)
@@ -122,7 +122,7 @@ function SearchBar() {
                         <Select style={{width: '100%'}}
                                 placeholder="股票C"
                                 value={stockC}
-                                disabled={!selectedSector}
+                                disabled={!stockB}
                                 onChange={item => {
                                     setStockC(item)
                                     addStock(item)

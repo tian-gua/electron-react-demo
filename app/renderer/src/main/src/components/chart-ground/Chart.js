@@ -66,6 +66,11 @@ function Chart(props) {
         console.log('指标: ', res)
         setReportData(res)
     }
+
+    useEffect(async () => {
+        await selectIndicator(indicator)
+    }, [indicator])
+
     return <div style={{width: '100%', height: '400px'}}>
         <Row>
             <Col span={8}>

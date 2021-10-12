@@ -13,21 +13,16 @@ initSqlJs().then(SQL => {
 })
 
 function findAllSectors() {
-    const sql = 'select distinct * from sector'
+    const sql = 'select distinct sector_name from sector'
     const res = db.exec(sql)
 
-    let sectorList = []
-    if (res) {
-        console.log(`sql[${sql}]查询结果: ${res}`)
-        const sectorValues = res[0]['values']
-        for (let i = 0; i < sectorValues.length; i++) {
-            sectorList.push({
-                sectorName: sectorValues[i][1]
-            })
-        }
-    } else {
+    console.log(`sql[${sql}]查询结果:  ${JSON.stringify(res)}`)
+
+    if (!res) {
         console.log('没有查到板块信息')
+        return []
     }
+    const sectorList = transfer(res)
     console.log('所有板块: ', sectorList)
     return sectorList
 }
@@ -46,22 +41,31 @@ function findSectorStocks({sector}) {
 }
 
 function listStocksData({stocks, report, indicator, term}) {
-    const sql = `select stock_code,${indicator},term from ${report} where stock_code = '${stocks[0]}' and term like '%${term}' order by term desc limit 10`
-    const res = db.exec(sql)
+    const data = []
 
-    console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
-    if (!res) {
-        return []
+    const stocksDataMap = new Map()
+    if (stocks) {
+        stocks.forEach(stockItem => {
+            const sql = `select stock_code,${indicator},term from ${report} where stock_code = '${stockItem}' and term like '%${term}' order by term desc limit 10`;
+            const res = db.exec(sql)
+
+            console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
+            if (!res) {
+                return []
+            }
+
+            const stockItemData = transfer(res)
+            stockItemData.reverse().forEach(item => {
+                if (stocksDataMap.has(item.term)) {
+                    stocksDataMap[item.term] = stocksDataMap.get(item.term)[stockItem] = item[indicator]
+                } else {
+                    stocksDataMap[item.term] = {term: item.term, [stockItem]: item[indicator]}
+                }
+            })
+        })
     }
 
-    const stockDataList = transfer(res)
-    console.log(stockDataList)
-
-    const data = []
-    stockDataList.forEach(item => {
-        data.push({data: item.term, [item.stockCode]: item[indicator]})
-    })
-
+    console.log("stockData: ", stocksDataMap)
     return data
 }
 
@@ -79,7 +83,6 @@ function transfer(res) {
     }
     return objList
 }
-
 
 function findAll(table) {
     const sql = 'select * from ' + table
