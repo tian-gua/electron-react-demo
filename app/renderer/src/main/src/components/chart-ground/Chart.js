@@ -33,7 +33,14 @@ function Chart(props) {
             return
         }
         console.log('渲染图表: ', chartId)
-        console.log('图标数据: ', ...stocks, ':', reportData)
+        console.log('图标数据: ', stocks, ':', reportData)
+        const series= [{type: 'bar'}]
+        if (stocks.size >= 2) {
+            series.push({type: 'bar'})
+        }
+        if (stocks.size >= 3) {
+            series.push({type: 'bar'})
+        }
         const chart = echarts.init(document.getElementById(chartId))
         chart.setOption({
                 legend: {},
@@ -46,7 +53,7 @@ function Chart(props) {
                 yAxis: {},
                 // Declare several bar series, each will be mapped
                 // to a column of dataset.source by default.
-                series: [{type: 'bar'},{type: 'bar'},{type: 'bar'}]
+                series: series
             }
         )
     }, [reportData])
