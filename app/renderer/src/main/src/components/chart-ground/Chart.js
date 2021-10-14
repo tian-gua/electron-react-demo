@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux'
 import {useState, useEffect} from "react";
 import * as echarts from "echarts"
 import {Select, Row, Col, message} from "antd";
-import indicatorMap from "./Indicator"
+import {indicator as indicatorMap, findIndicatorInfo, format} from "./Indicator"
 
 const {ipcRenderer} = window.require('electron')
 
@@ -34,7 +34,10 @@ function Chart(props) {
         }
         console.log('渲染图表: ', chartId)
         console.log('图标数据: ', stocks, ':', reportData)
-        const series= [{type: 'bar'}]
+
+        const indicatorInfo = findIndicatorInfo(report, indicator)
+
+        const series = [{type: 'bar'}]
         if (stocks.size >= 2) {
             series.push({type: 'bar'})
         }
@@ -44,13 +47,23 @@ function Chart(props) {
         const chart = echarts.init(document.getElementById(chartId))
         chart.setOption({
                 legend: {},
-                tooltip: {},
+                tooltip: {
+                    formatter: function (params) {
+                        return  format(params.value[params.seriesName], indicatorInfo.unit)
+                    }
+                },
                 dataset: {
                     dimensions: ['term', ...stocks],
                     source: [...reportData]
                 },
                 xAxis: {type: 'category'},
-                yAxis: {},
+                yAxis: {
+                    axisLabel: {
+                        formatter: function (value, index) {
+                            return format(value, indicatorInfo.unit)
+                        }
+                    }
+                },
                 // Declare several bar series, each will be mapped
                 // to a column of dataset.source by default.
                 series: series

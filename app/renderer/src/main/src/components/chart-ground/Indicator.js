@@ -1,4 +1,3 @@
-
 const indicator = {
     zyzb: [
         {
@@ -824,4 +823,14 @@ const indicator = {
     ]
 }
 
-export default indicator
+function format(value, unit) {
+    if (unit === '亿') {
+        return (value / 10000 / 10000) + '亿'
+    }
+}
+
+function findIndicatorInfo(report, indicatorCode) {
+    return indicator[report].find(item => item.indicatorCode === indicatorCode)
+}
+
+export {indicator, findIndicatorInfo, format}
