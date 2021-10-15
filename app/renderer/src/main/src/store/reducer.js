@@ -11,6 +11,8 @@ const reducer = (state, action) => {
             return {...state, reportData: action.reportData}
         case 'changeChartIndex':
             return {...state, chartIndex: action.payload}
+        case 'quickSearch':
+            return {...state, quickSearch: new Date().getTime()}
         default:
             return state
     }

@@ -12,6 +12,7 @@ function StockChart() {
     const [cols, setCols] = useState([])
     const chartIndex = useSelector(state => state.chartIndex)
     const stocks = useSelector(state => state.stocks)
+    const quickSearch = useSelector(state => state.quickSearch)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,7 +20,20 @@ function StockChart() {
         for (let i = 1; i < chartIndex + 1; i++) {
             newCols.push(<Col key={i} span={12}>
                 <Card bordered={true} style={{width: '100%', height: 400}}>
-                    <Chart chartId={i} report='zyzb' defaultIndicator='jlr'/>
+                    <Chart chartId={i} report='zyzb' defaultIndicator=''/>
+                </Card>
+            </Col>)
+        }
+        setCols(newCols)
+    }, [quickSearch])
+
+
+    useEffect(() => {
+        const newCols = []
+        for (let i = 1; i < chartIndex + 1; i++) {
+            newCols.push(<Col key={i} span={12}>
+                <Card bordered={true} style={{width: '100%', height: 400}}>
+                    <Chart chartId={i} report='zyzb' defaultIndicator=''/>
                 </Card>
             </Col>)
         }

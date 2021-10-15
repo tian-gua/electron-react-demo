@@ -9,6 +9,7 @@ import reducer from './store/reducer'
 let store = createStore(reducer, {
     stocks: new Set(),
     chartIndex: 0,
+    quickSearch: 0,
     reportData: {}
 })
 

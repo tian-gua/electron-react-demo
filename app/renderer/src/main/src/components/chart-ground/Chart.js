@@ -49,7 +49,7 @@ function Chart(props) {
                 legend: {},
                 tooltip: {
                     formatter: function (params) {
-                        return  format(params.value[params.seriesName], indicatorInfo.unit)
+                        return format(params.value[params.seriesName], indicatorInfo.unit)
                     }
                 },
                 dataset: {
@@ -88,7 +88,9 @@ function Chart(props) {
     }
 
     useEffect(async () => {
-        await selectIndicator(indicator)
+        if (indicator) {
+            await selectIndicator(indicator)
+        }
     }, [indicator])
 
     return <div style={{width: '100%', height: '400px'}}>

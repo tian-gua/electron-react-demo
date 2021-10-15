@@ -65,8 +65,7 @@ function SearchBar() {
             message.info('请选择标的');
             return
         }
-        const res = await ipcRenderer.invoke('query', 'list-stocks-data', {stocks, report: 'jlr'})
-        dispatch({type: 'changeStockData', payload: res})
+        dispatch({type: 'quickSearch'})
     }
 
     const [form] = Form.useForm()
