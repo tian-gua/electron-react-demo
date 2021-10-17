@@ -9,6 +9,10 @@ import {indicator as indicatorMap, findIndicatorInfo, format} from "./Indicator"
 const {ipcRenderer} = window.require('electron')
 
 function Chart(props) {
+    let chartType = props.chartType
+    if (!chartType) {
+        chartType = 'bar'
+    }
     const stocks = useSelector(state => state.stocks)
     // const reportData = useSelector(state => state.reportData)
 
@@ -37,12 +41,12 @@ function Chart(props) {
 
         const indicatorInfo = findIndicatorInfo(report, indicator)
 
-        const series = [{type: 'bar'}]
+        const series = [{type: chartType}]
         if (stocks.size >= 2) {
-            series.push({type: 'bar'})
+            series.push({type: chartType})
         }
         if (stocks.size >= 3) {
-            series.push({type: 'bar'})
+            series.push({type: chartType})
         }
         const chart = echarts.init(document.getElementById(chartId))
         chart.setOption({

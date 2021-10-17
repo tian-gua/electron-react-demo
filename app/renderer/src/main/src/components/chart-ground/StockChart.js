@@ -21,13 +21,31 @@ function StockChart() {
             return
         }
         const tempCharts = []
-        for (let i = 0; i < quickSearch; i++) {
-            tempCharts.push(<Col key={i} span={12}>
-                <Card bordered={true} style={{width: '100%', height: 400}}>
-                    <Chart chartId={i} report='zyzb' defaultIndicator='jlr'/>
-                </Card>
-            </Col>)
-        }
+        tempCharts.push(<Col key='1' span={12}>
+            <Card bordered={true} style={{width: '100%', height: 400}}>
+                <Chart chartId='1' report='zyzb' defaultIndicator='jzcsyl' chartType='line'/>
+            </Card>
+        </Col>)
+        tempCharts.push(<Col key='2' span={12}>
+            <Card bordered={true} style={{width: '100%', height: 400}}>
+                <Chart chartId='2' report='zyzb' defaultIndicator='jlrtbzz' chartType='line'/>
+            </Card>
+        </Col>)
+        tempCharts.push(<Col key='3' span={12}>
+            <Card bordered={true} style={{width: '100%', height: 400}}>
+                <Chart chartId='3' report='lrb' defaultIndicator='jbmgsy' chartType='bar'/>
+            </Card>
+        </Col>)
+        tempCharts.push(<Col key='4' span={12}>
+            <Card bordered={true} style={{width: '100%', height: 400}}>
+                <Chart chartId='4' report='zyzb' defaultIndicator='zzcbcl' chartType='line'/>
+            </Card>
+        </Col>)
+        tempCharts.push(<Col key='5' span={12}>
+            <Card bordered={true} style={{width: '100%', height: 400}}>
+                <Chart chartId='5' report='zyzb' defaultIndicator='xsmll' chartType='line'/>
+            </Card>
+        </Col>)
         setCharts(tempCharts)
     }, [quickSearch])
 
@@ -38,7 +56,7 @@ function StockChart() {
             return
         }
         const tempCharts = []
-        for (let i = 0; i < chartIndex + quickSearch; i++) {
+        for (let i = quickSearch; i < chartIndex + quickSearch; i++) {
             tempCharts.push(<Col key={i} span={12}>
                 <Card bordered={true} style={{width: '100%', height: 400}}>
                     <Chart chartId={i} report='zyzb' defaultIndicator=''/>

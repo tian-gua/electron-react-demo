@@ -7,7 +7,7 @@ const indicator = {
         }, {
             indicatorName: '营业收入同比增长',
             indicatorCode: 'yysrtbzz',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '净利润',
@@ -17,7 +17,7 @@ const indicator = {
         {
             indicatorName: '净利润同比增长',
             indicatorCode: 'jlrtbzz',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '扣非净利润',
@@ -27,17 +27,17 @@ const indicator = {
         {
             indicatorName: '扣非净利润同比增长',
             indicatorCode: 'kfjlrtbzz',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '每股收益',
             indicatorCode: 'mgsy',
-            unit: '亿'
+            unit: '元'
         },
         {
             indicatorName: '每股净资产',
             indicatorCode: 'mgjzc',
-            unit: '亿'
+            unit: '元'
         },
         {
             indicatorName: '每股资本公积金',
@@ -57,117 +57,113 @@ const indicator = {
         {
             indicatorName: '净资产收益率',
             indicatorCode: 'jzcsyl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '净资产收益率-摊薄',
             indicatorCode: 'jzcsyltb',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '总资产报酬率',
             indicatorCode: 'zzcbcl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '人力投入回报率',
             indicatorCode: 'rltrhbl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '销售毛利率',
             indicatorCode: 'xsmll',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '销售净利率',
             indicatorCode: 'xsjll',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '资产负债率',
             indicatorCode: 'zcfzl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '流动比率',
             indicatorCode: 'ldbl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '速动比率',
             indicatorCode: 'sdbl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '权益乘数',
             indicatorCode: 'qycs',
-            unit: '亿'
         },
         {
             indicatorName: '产权比率',
             indicatorCode: 'cqbl',
-            unit: '亿'
         },
         {
             indicatorName: '股东权益比率',
             indicatorCode: 'gdqybl',
-            unit: '亿'
         },
         {
             indicatorName: '现金流量比率',
             indicatorCode: 'xjllbl',
-            unit: '亿'
         },
         {
             indicatorName: '存货周转天数',
             indicatorCode: 'chzzts',
-            unit: '亿'
+            unit: '天'
         },
         {
             indicatorName: '应收账款周转天数',
             indicatorCode: 'yszkzzts',
-            unit: '亿'
+            unit: '天'
         },
         {
             indicatorName: '应付账款周转天数',
             indicatorCode: 'yfzkzzts',
-            unit: '亿'
+            unit: '天'
         },
         {
             indicatorName: '现金循环周期',
             indicatorCode: 'xjxhzq',
-            unit: '亿'
+            unit: '天'
         },
         {
             indicatorName: '营业周期',
             indicatorCode: 'yyzq',
-            unit: '亿'
+            unit: '天'
         },
         {
             indicatorName: '总资产周转率',
             indicatorCode: 'zzczzl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '存货周转率',
             indicatorCode: 'chzzl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '应收账款周转率',
             indicatorCode: 'yszkzzl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '应付账款周转率',
             indicatorCode: 'yfzkzzl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '流动资产周转率',
             indicatorCode: 'ldzczzl',
-            unit: '亿'
+            unit: '%'
         },
         {
             indicatorName: '固定资产周转率',
@@ -334,22 +330,22 @@ const indicator = {
         {
             indicatorName: '每股收益',
             indicatorCode: 'mgsy',
-            unit: '亿'
+            unit: '元'
         },
         {
             indicatorName: '基本每股收益',
             indicatorCode: 'jbmgsy',
-            unit: '亿'
+            unit: '元'
         },
         {
             indicatorName: '稀释每股收益',
             indicatorCode: 'xsmgsy',
-            unit: '亿'
+            unit: '元'
         },
         {
             indicatorName: '其他综合收益',
             indicatorCode: 'qtzhsy',
-            unit: '亿'
+            unit: '元'
         },
         {
             indicatorName: '归属母公司所有者的其他综合收益',
@@ -826,6 +822,12 @@ const indicator = {
 function format(value, unit) {
     if (unit === '亿') {
         return (value / 10000 / 10000) + '亿'
+    } else if (unit === '%') {
+        return (value) + '%'
+    } else if (unit === '元') {
+        return (value) + '元'
+    } else if (unit === '天') {
+        return (value) + '天'
     }
 }
 
