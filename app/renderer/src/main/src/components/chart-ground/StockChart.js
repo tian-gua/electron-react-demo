@@ -17,6 +17,7 @@ function StockChart() {
 
     useEffect(() => {
         if (!quickSearch) {
+            setCharts([])
             return
         }
         const tempCharts = []
@@ -33,6 +34,7 @@ function StockChart() {
 
     useEffect(() => {
         if (!chartIndex) {
+            setCharts([])
             return
         }
         const tempCharts = []
