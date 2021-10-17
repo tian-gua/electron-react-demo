@@ -9,41 +9,47 @@ import {useSelector, useDispatch} from 'react-redux'
 
 
 function StockChart() {
-    const [cols, setCols] = useState([])
+    const [charts, setCharts] = useState([])
     const chartIndex = useSelector(state => state.chartIndex)
     const stocks = useSelector(state => state.stocks)
     const quickSearch = useSelector(state => state.quickSearch)
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const newCols = []
-        for (let i = 1; i < chartIndex + 1; i++) {
-            newCols.push(<Col key={i} span={12}>
+        if (!quickSearch) {
+            return
+        }
+        const tempCharts = []
+        for (let i = 0; i < quickSearch; i++) {
+            tempCharts.push(<Col key={i} span={12}>
                 <Card bordered={true} style={{width: '100%', height: 400}}>
-                    <Chart chartId={i} report='zyzb' defaultIndicator=''/>
+                    <Chart chartId={i} report='zyzb' defaultIndicator='jlr'/>
                 </Card>
             </Col>)
         }
-        setCols(newCols)
+        setCharts(tempCharts)
     }, [quickSearch])
 
 
     useEffect(() => {
-        const newCols = []
-        for (let i = 1; i < chartIndex + 1; i++) {
-            newCols.push(<Col key={i} span={12}>
+        if (!chartIndex) {
+            return
+        }
+        const tempCharts = []
+        for (let i = 0; i < chartIndex + quickSearch; i++) {
+            tempCharts.push(<Col key={i} span={12}>
                 <Card bordered={true} style={{width: '100%', height: 400}}>
                     <Chart chartId={i} report='zyzb' defaultIndicator=''/>
                 </Card>
             </Col>)
         }
-        setCols(newCols)
+        setCharts(tempCharts)
     }, [chartIndex])
 
 
     return <div style={{width: '95%', margin: 'auto auto', padding: 20}}>
         <Row gutter={[20, 20]}>
-            {cols}
+            {charts}
             <Col span={12}>
                 <Card bordered={false} style={{width: '100%', height: 400}}>
                     <div style={{width: '80%', height: 370}}>

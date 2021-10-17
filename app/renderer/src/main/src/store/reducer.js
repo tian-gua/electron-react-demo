@@ -2,7 +2,7 @@ const reducer = (state, action) => {
     console.log('dispatch:', JSON.stringify(action))
     switch (action.type) {
         case 'initStocks':
-            return {...state, stocks: new Set()}
+            return {...state, stocks: new Set(), quickSearch: 0}
         case 'addStock':
             const stockSet = state.stocks
             stockSet.add(action.payload)
@@ -12,7 +12,7 @@ const reducer = (state, action) => {
         case 'changeChartIndex':
             return {...state, chartIndex: action.payload}
         case 'quickSearch':
-            return {...state, quickSearch: new Date().getTime()}
+            return {...state, quickSearch: 10}
         default:
             return state
     }
