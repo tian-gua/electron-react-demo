@@ -108,7 +108,17 @@ function StockChart() {
         </Col>)
         tempCharts.push(<Col key='18' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='18' report='xjllb' defaultIndicator='jjhdcsdxjl' chartType='bar'/>
+                <Chart chartId='18' report='xjllb' defaultIndicator='jyhdcsdxjllje' chartType='bar'/>
+            </Card>
+        </Col>)
+        tempCharts.push(<Col key='19' span={12}>
+            <Card bordered={true} style={{width: '100%', height: 400}}>
+                <Chart chartId='19' report='xjllb' defaultIndicator='czhdcsdxjlje' chartType='bar'/>
+            </Card>
+        </Col>)
+        tempCharts.push(<Col key='20' span={12}>
+            <Card bordered={true} style={{width: '100%', height: 400}}>
+                <Chart chartId='20' report='xjllb' defaultIndicator='tzhdcsdxjllje' chartType='bar'/>
             </Card>
         </Col>)
         setCharts(tempCharts)

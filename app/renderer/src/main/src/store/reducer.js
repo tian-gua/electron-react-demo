@@ -12,7 +12,7 @@ const reducer = (state, action) => {
         case 'changeChartIndex':
             return {...state, chartIndex: action.payload}
         case 'quickSearch':
-            return {...state, quickSearch: 20}
+            return {...state, quickSearch: 50}
         default:
             return state
     }
