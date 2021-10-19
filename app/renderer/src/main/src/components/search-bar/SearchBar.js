@@ -65,7 +65,8 @@ function SearchBar() {
             message.info('请选择标的');
             return
         }
-        dispatch({type: 'quickSearch'})
+        await dispatch({type: 'initChart'})
+        await dispatch({type: 'quickSearch'})
     }
 
     const [form] = Form.useForm()
@@ -80,8 +81,18 @@ function SearchBar() {
         dispatch({type: 'initStocks'})
     }
 
-    const addStock = (item) => {
-        dispatch({type: 'addStock', payload: item})
+    const addStock = () => {
+        let stocks = []
+        if (stockA) {
+            stocks.push(stockA)
+        }
+        if (stockB) {
+            stocks.push(stockB)
+        }
+        if (stockC) {
+            stocks.push(stockC)
+        }
+        dispatch({type: 'setStocks', payload: stocks})
     }
     return (
         <div style={{height: 80, paddingTop: '20px', paddingLeft: '10px', overflow: 'hidden'}}>
@@ -102,7 +113,7 @@ function SearchBar() {
                                 disabled={!selectedSector}
                                 onChange={item => {
                                     setStockA(item)
-                                    addStock(item)
+                                    addStock()
                                 }}
                                 options={stockOptions}/>
                     </Col>
@@ -113,7 +124,7 @@ function SearchBar() {
                                 disabled={!stockA}
                                 onChange={item => {
                                     setStockB(item)
-                                    addStock(item)
+                                    addStock()
                                 }}
                                 options={stockOptions}/>
                     </Col>
@@ -124,7 +135,7 @@ function SearchBar() {
                                 disabled={!stockB}
                                 onChange={item => {
                                     setStockC(item)
-                                    addStock(item)
+                                    addStock()
                                 }}
                                 options={stockOptions}/>
                     </Col>

@@ -3,10 +3,10 @@ const reducer = (state, action) => {
     switch (action.type) {
         case 'initStocks':
             return {...state, stocks: new Set(), quickSearch: 0}
-        case 'addStock':
-            const stockSet = state.stocks
-            stockSet.add(action.payload)
-            return {...state, stocks: stockSet}
+        case 'initChart':
+            return {...state, chartIndex: 0, quickSearch: 0}
+        case 'setStocks':
+            return {...state, stocks: action.payload}
         case 'changeReportData':
             return {...state, reportData: action.reportData}
         case 'changeChartIndex':
