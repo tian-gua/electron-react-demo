@@ -1,12 +1,16 @@
 const reducer = (state, action) => {
     console.log('dispatch:', JSON.stringify(action))
     switch (action.type) {
-        case 'initStocks':
+        case 'clearStocks':
             return {...state, stocks: new Set(), quickSearch: 0}
         case 'initChart':
             return {...state, chartIndex: 0, quickSearch: 0}
-        case 'setStocks':
-            return {...state, stocks: action.payload}
+        case 'addStock':
+            state.stocks.add(action.payload)
+            return {...state, stocks: state.stocks}
+        case 'removeStock':
+            state.stocks.delete(action.payload)
+            return {...state, stocks: state.stocks}
         case 'changeReportData':
             return {...state, reportData: action.reportData}
         case 'changeChartIndex':

@@ -78,22 +78,9 @@ function SearchBar() {
         setStockB(undefined)
         setStockC(undefined)
         dispatch({type: 'changeChartIndex', payload: 0})
-        dispatch({type: 'initStocks'})
+        dispatch({type: 'clearStocks'})
     }
 
-    const addStock = () => {
-        let stocks = []
-        if (stockA) {
-            stocks.push(stockA)
-        }
-        if (stockB) {
-            stocks.push(stockB)
-        }
-        if (stockC) {
-            stocks.push(stockC)
-        }
-        dispatch({type: 'setStocks', payload: stocks})
-    }
     return (
         <div style={{height: 80, paddingTop: '20px', paddingLeft: '10px', overflow: 'hidden'}}>
             <Form form={form}>
@@ -111,9 +98,10 @@ function SearchBar() {
                                 placeholder="股票A"
                                 value={stockA}
                                 disabled={!selectedSector}
-                                onChange={item => {
+                                onSelect={async item => {
+                                    await dispatch({type: 'removeStock', payload: stockA})
+                                    await dispatch({type: 'addStock', payload: item})
                                     setStockA(item)
-                                    addStock()
                                 }}
                                 options={stockOptions}/>
                     </Col>
@@ -122,9 +110,10 @@ function SearchBar() {
                                 placeholder="股票B"
                                 value={stockB}
                                 disabled={!stockA}
-                                onChange={item => {
+                                onSelect={async item => {
+                                    await dispatch({type: 'removeStock', payload: stockB})
+                                    await dispatch({type: 'addStock', payload: item})
                                     setStockB(item)
-                                    addStock()
                                 }}
                                 options={stockOptions}/>
                     </Col>
@@ -133,9 +122,10 @@ function SearchBar() {
                                 placeholder="股票C"
                                 value={stockC}
                                 disabled={!stockB}
-                                onChange={item => {
+                                onSelect={async item => {
+                                    await dispatch({type: 'removeStock', payload: stockC})
+                                    await dispatch({type: 'addStock', payload: item})
                                     setStockC(item)
-                                    addStock()
                                 }}
                                 options={stockOptions}/>
                     </Col>
