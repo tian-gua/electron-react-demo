@@ -7,7 +7,7 @@ import {createStore} from "redux";
 import reducer from './store/reducer'
 
 let store = createStore(reducer, {
-    stocks: new Set(),
+    stocks: {a: undefined, b: undefined, c: undefined},
     chartIndex: 0,
     quickSearch: 0,
     reportData: {}

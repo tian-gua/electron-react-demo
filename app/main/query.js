@@ -43,9 +43,20 @@ function findSectorStocks({sector}) {
 
 function listStocksData({stocks, report, indicator, term}) {
     const stocksDataMap = new Map()
-    if (stocks) {
-        stocks.forEach(stockItem => {
-            const sql = `select stock_code,${indicator},term from ${report} where stock_code = '${stockItem}' and term like '%${term}' order by term desc limit 10`;
+
+    const stockCodes = new Set()
+    if (stocks.a) {
+        stockCodes.add(stocks.a.value)
+    }
+    if (stocks.b) {
+        stockCodes.add(stocks.b.value)
+    }
+    if (stocks.c) {
+        stockCodes.add(stocks.c.value)
+    }
+    if (stockCodes) {
+        stockCodes.forEach(stockCodeItem => {
+            const sql = `select stock_name,stock_code,${indicator},term from ${report} where stock_code = '${stockCodeItem}' and term like '%${term}' order by term desc limit 10`;
             const res = db.exec(sql)
 
             console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
@@ -56,9 +67,9 @@ function listStocksData({stocks, report, indicator, term}) {
             const stockItemData = transfer(res)
             stockItemData.reverse().forEach(item => {
                 if (stocksDataMap.has(item.term)) {
-                    stocksDataMap.get(item.term)[stockItem] = item[indicator]
+                    stocksDataMap.get(item.term)[item.stockName] = item[indicator]
                 } else {
-                    stocksDataMap.set(item.term, {term: item.term, [stockItem]: item[indicator]})
+                    stocksDataMap.set(item.term, {term: item.term, [item.stockName]: item[indicator]})
                 }
             })
         })

@@ -37,27 +37,51 @@ function Chart(props) {
             return
         }
         console.log('渲染图表: ', chartId)
-        console.log('图标数据: ', stocks, ':', reportData)
+        console.log('图表数据: ', stocks, ':', reportData)
 
         const indicatorInfo = findIndicatorInfo(report, indicator)
 
+        const stockNameSet = new Set()
+        if (stocks.a) {
+            stockNameSet.add(stocks.a.label)
+        }
+        if (stocks.b) {
+            stockNameSet.add(stocks.b.label)
+        }
+        if (stocks.c) {
+            stockNameSet.add(stocks.c.label)
+        }
+        console.log(stockNameSet)
         const series = [{type: chartType}]
-        if (stocks.size >= 2) {
+        if (stockNameSet.size >= 2) {
             series.push({type: chartType})
         }
-        if (stocks.size >= 3) {
+        if (stockNameSet.size >= 3) {
             series.push({type: chartType})
         }
         const chart = echarts.init(document.getElementById(chartId))
+        chart.clear()
         chart.setOption({
                 legend: {},
                 tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'line',
+                        crossStyle: {
+                            color: '#999'
+                        }
+                    },
                     formatter: function (params) {
-                        return format(params.value[params.seriesName], indicatorInfo.unit)
+                        console.log(params)
+                        let str = ''
+                        params.forEach(item => {
+                            str += item.seriesName + ': ' + format(item.data[item.seriesName], indicatorInfo.unit) + '</br>'
+                        })
+                        return str
                     }
                 },
                 dataset: {
-                    dimensions: ['term', ...stocks],
+                    dimensions: ['term', ...stockNameSet],
                     source: [...reportData]
                 },
                 xAxis: {type: 'category'},
@@ -76,13 +100,13 @@ function Chart(props) {
     }, [reportData])
 
     const selectIndicator = async (v) => {
-        if (!stocks || stocks.size === 0) {
+        if (!stocks.a && !stocks.c && !stocks.c) {
             message.info('请选择标的');
             return
         }
         setIndicator(v)
         const res = await ipcRenderer.invoke('query', 'list-stocks-data', {
-            stocks: [...stocks],
+            stocks: stocks,
             report,
             indicator: v,
             term: 'Q4'

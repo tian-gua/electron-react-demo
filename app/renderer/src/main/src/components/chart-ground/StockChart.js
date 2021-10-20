@@ -106,21 +106,21 @@ function StockChart() {
                 <Chart chartId='17' report='zcfzb' defaultIndicator='ssgdqy' chartType='bar'/>
             </Card>
         </Col>)
-        tempCharts.push(<Col key='18' span={12}>
-            <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='18' report='xjllb' defaultIndicator='jyhdcsdxjllje' chartType='bar'/>
-            </Card>
-        </Col>)
-        tempCharts.push(<Col key='19' span={12}>
-            <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='19' report='xjllb' defaultIndicator='czhdcsdxjlje' chartType='bar'/>
-            </Card>
-        </Col>)
-        tempCharts.push(<Col key='20' span={12}>
-            <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='20' report='xjllb' defaultIndicator='tzhdcsdxjllje' chartType='bar'/>
-            </Card>
-        </Col>)
+        // tempCharts.push(<Col key='18' span={12}>
+        //     <Card bordered={true} style={{width: '100%', height: 400}}>
+        //         <Chart chartId='18' report='xjllb' defaultIndicator='jyhdcsdxjllje' chartType='bar'/>
+        //     </Card>
+        // </Col>)
+        // tempCharts.push(<Col key='19' span={12}>
+        //     <Card bordered={true} style={{width: '100%', height: 400}}>
+        //         <Chart chartId='19' report='xjllb' defaultIndicator='czhdcsdxjlje' chartType='bar'/>
+        //     </Card>
+        // </Col>)
+        // tempCharts.push(<Col key='20' span={12}>
+        //     <Card bordered={true} style={{width: '100%', height: 400}}>
+        //         <Chart chartId='20' report='xjllb' defaultIndicator='tzhdcsdxjllje' chartType='bar'/>
+        //     </Card>
+        // </Col>)
         setCharts(tempCharts)
     }, [quickSearch])
 
@@ -157,11 +157,10 @@ function StockChart() {
                                     fontSize: 50
                                 }}
                                 onClick={async () => {
-                                    if (!stocks || stocks.size === 0) {
+                                    if (!stocks.a && !stocks.c && !stocks.c) {
                                         message.info('请选择标的');
                                         return
                                     }
-                                    console.log(stocks)
                                     dispatch({type: 'changeChartIndex', payload: chartIndex + 1})
                                 }}
                         ><AppstoreAddOutlined/></Button>

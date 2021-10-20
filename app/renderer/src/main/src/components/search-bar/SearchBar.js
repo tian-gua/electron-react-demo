@@ -97,10 +97,10 @@ function SearchBar() {
                                 type="primary"
                                 placeholder="股票A"
                                 value={stockA}
+                                labelInValue={true}
                                 disabled={!selectedSector}
                                 onSelect={async item => {
-                                    await dispatch({type: 'removeStock', payload: stockA})
-                                    await dispatch({type: 'addStock', payload: item})
+                                    await dispatch({type: 'setStocks', payload: {index: 'a', stock: item}})
                                     setStockA(item)
                                 }}
                                 options={stockOptions}/>
@@ -109,10 +109,10 @@ function SearchBar() {
                         <Select style={{width: '100%'}}
                                 placeholder="股票B"
                                 value={stockB}
+                                labelInValue={true}
                                 disabled={!stockA}
                                 onSelect={async item => {
-                                    await dispatch({type: 'removeStock', payload: stockB})
-                                    await dispatch({type: 'addStock', payload: item})
+                                    await dispatch({type: 'setStocks', payload: {index: 'b', stock: item}})
                                     setStockB(item)
                                 }}
                                 options={stockOptions}/>
@@ -121,10 +121,10 @@ function SearchBar() {
                         <Select style={{width: '100%'}}
                                 placeholder="股票C"
                                 value={stockC}
+                                labelInValue={true}
                                 disabled={!stockB}
                                 onSelect={async item => {
-                                    await dispatch({type: 'removeStock', payload: stockC})
-                                    await dispatch({type: 'addStock', payload: item})
+                                    await dispatch({type: 'setStocks', payload: {index: 'c', stock: item}})
                                     setStockC(item)
                                 }}
                                 options={stockOptions}/>
