@@ -15,11 +15,7 @@ function StockChart() {
     const quickSearch = useSelector(state => state.quickSearch)
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (!quickSearch) {
-            setCharts([])
-            return
-        }
+    const quickSearchCharts = () => {
         const tempCharts = []
         tempCharts.push(<Col key='1' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
@@ -121,7 +117,16 @@ function StockChart() {
         //         <Chart chartId='20' report='xjllb' defaultIndicator='tzhdcsdxjllje' chartType='bar'/>
         //     </Card>
         // </Col>)
-        setCharts(tempCharts)
+        return tempCharts;
+    }
+
+    useEffect(() => {
+        if (!quickSearch) {
+            setCharts([])
+            return
+        }
+
+        setCharts(quickSearchCharts())
     }, [quickSearch])
 
 
@@ -130,7 +135,7 @@ function StockChart() {
             setCharts([])
             return
         }
-        const tempCharts = []
+        const tempCharts = quickSearchCharts()
         for (let i = quickSearch; i < chartIndex + quickSearch; i++) {
             tempCharts.push(<Col key={i} span={12}>
                 <Card bordered={true} style={{width: '100%', height: 400}}>
