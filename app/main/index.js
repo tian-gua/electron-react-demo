@@ -13,10 +13,12 @@ app.on('ready', () => {
             contextIsolation: false
         }
     })
-    if (isDev) {
+    if (!isDev) {
         win.loadURL('http://localhost:3000');
     } else {
-        win.loadFile(path.resolve(__dirname, '../renderer/'))
+        const url = path.resolve(__dirname, '../renderer/src/main/build/index.html')
+        console.log(url)
+        win.loadFile(url).then(res => console.log(res)).catch(error => console.error(error))
     }
 
     handleIPC(win)

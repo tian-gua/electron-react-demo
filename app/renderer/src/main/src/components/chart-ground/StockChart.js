@@ -135,7 +135,10 @@ function StockChart() {
             setCharts([])
             return
         }
-        const tempCharts = quickSearchCharts()
+        let tempCharts = []
+        if (quickSearch !== 0) {
+            tempCharts = quickSearchCharts()
+        }
         for (let i = quickSearch; i < chartIndex + quickSearch; i++) {
             tempCharts.push(<Col key={i} span={12}>
                 <Card bordered={true} style={{width: '100%', height: 400}}>
