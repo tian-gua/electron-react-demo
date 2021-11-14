@@ -4,7 +4,19 @@ const path = require('path')
 const handleIPC = require('./ipc')
 
 let win
-app.on('ready', () => {
+app.whenReady().then(() => {
+    createWindow()
+
+    app.on('activate', function () {
+        if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    })
+})
+
+app.on('window-all-closed', function () {
+    if (process.platform !== 'darwin') app.quit()
+})
+
+function createWindow() {
     win = new BrowserWindow({
         width: 1200,
         height: 800,
@@ -13,7 +25,6 @@ app.on('ready', () => {
             contextIsolation: false
         }
     })
-
 
     if (isDev) {
         win.loadURL('http://localhost:3000');
@@ -28,4 +39,4 @@ app.on('ready', () => {
     }
 
     handleIPC(win)
-})
+}
