@@ -10,7 +10,6 @@ function SearchBar() {
     console.log('渲染SearchBar')
     const [selectedSector, setSelectedSector] = useState(undefined)
     const [term, setTerm] = useState('Q4')
-    const [yearRange, setYearRange] = useState('21,20,19,18,17')
     const [sectorStocks, setSectorStocks] = useState([])
     const [sectorList, setSectorList] = useState([])
     const [stockA, setStockA] = useState(undefined)
@@ -138,10 +137,10 @@ function SearchBar() {
                         </Select>
                     </Col>
                     <Col span={2}>
-                        <Select style={{width: '100%'}} defaultValue={yearRange} placeholder="范围"
-                                onChange={setYearRange}>
-                            <Select.Option value='21,20,19,18,17'>近5年</Select.Option>
-                            <Select.Option value='21,20,19,18,17,16,15,14,13,12'>近10年</Select.Option>
+                        <Select style={{width: '100%'}} placeholder="范围" defaultValue={10}
+                                onChange={v => dispatch({type: 'setYearRange', payload: v})}>
+                            <Select.Option value={5}>近5年</Select.Option>
+                            <Select.Option value={10}>近10年</Select.Option>
                         </Select>
                     </Col>
                     <Col span={4}>

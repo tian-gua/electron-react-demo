@@ -10,6 +10,7 @@ let store = createStore(reducer, {
     stocks: {a: undefined, b: undefined, c: undefined},
     chartIndex: 0,
     quickSearch: 0,
+    yearRange: 10,
     reportData: {}
 })
 

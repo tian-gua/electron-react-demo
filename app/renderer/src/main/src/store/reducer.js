@@ -14,6 +14,8 @@ const reducer = (state, action) => {
             return {...state, chartIndex: action.payload}
         case 'quickSearch':
             return {...state, quickSearch: 50}
+        case 'setYearRange':
+            return {...state, yearRange: action.payload}
         default:
             return state
     }

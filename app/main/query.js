@@ -44,7 +44,7 @@ function findSectorStocks({sector}) {
     return stockList
 }
 
-function listStocksData({stocks, report, indicator, term}) {
+function listStocksData({stocks, report, indicator, term, yearRange}) {
     const stocksDataMap = new Map()
 
     const stockCodes = new Set()
@@ -57,9 +57,10 @@ function listStocksData({stocks, report, indicator, term}) {
     if (stocks.c) {
         stockCodes.add(stocks.c.value)
     }
+
     if (stockCodes) {
         stockCodes.forEach(stockCodeItem => {
-            const sql = `select stock_name,stock_code,${indicator},term from ${report} where stock_code = '${stockCodeItem}' and term like '%${term}' order by term desc limit 10`;
+            const sql = `select stock_name,stock_code,${indicator},term from ${report} where stock_code = '${stockCodeItem}' and term like '%${term}' order by term desc limit ${yearRange}`;
             const res = db.exec(sql)
 
             console.log(`sql[${sql}]查询结果: ${JSON.stringify(res)}`)
