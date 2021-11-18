@@ -4,12 +4,8 @@ const path = require('path')
 const handleIPC = require('./ipc')
 
 let win
-app.whenReady().then(() => {
+app.on('ready', () => {
     createWindow()
-
-    app.on('activate', function () {
-        if (BrowserWindow.getAllWindows().length === 0) createWindow()
-    })
 })
 
 app.on('window-all-closed', function () {
@@ -26,14 +22,12 @@ function createWindow() {
         }
     })
 
+    // const url = path.resolve(__dirname, '../renderer/src/main/build/index.html')
+    // win.loadFile(url).then(res => console.log(res)).catch(error => console.error(error))
+
     if (isDev) {
         win.loadURL('http://localhost:3000');
     } else {
-        // const url = path.resolve(__dirname, '../renderer/src/main/build/index.html')
-        // const url = path.resolve(__dirname, 'static/index.html')
-        // win.loadFile(url).then(res => console.log(res)).catch(error => console.error(error))
-
-        // const url = path.resolve(__dirname, 'static/index.html')
         const url = "../../page/index.html"
         win.loadFile(url).then(res => console.log(res)).catch(error => console.error(error))
     }

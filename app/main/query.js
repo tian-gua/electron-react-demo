@@ -3,10 +3,12 @@ const StringUtils = require('../utils/StringUtils')
 const initSqlJs = require('sql.js')
 const fs = require('fs')
 const path = require('path');
-// const fileBuffer = fs.readFileSync(path.join(__dirname, '../db/stock.sqlite'))
-const stockPath = path.join(__dirname, '../../../../../../config/stock/stock.sqlite')
-const fileBuffer = fs.readFileSync(stockPath)
-// console.log(stockPath)
+const os = require('os')
+
+const fileBuffer = fs.readFileSync(path.join(__dirname, '../db/stock.sqlite'))
+// const stockPath = path.join(__dirname, '../../../../../../config/stock/stock.sqlite')
+// const stockPath = path.join(os.homedir(), '/config/stock/stock.sqlite')
+// const fileBuffer = fs.readFileSync(stockPath)
 // const fileBuffer = fs.readFileSync('~/Desktop/stock.sqlite')
 
 let db
