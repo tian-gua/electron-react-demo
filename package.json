@@ -35,7 +35,7 @@
   },
   "build": {
     "mac": {
-      "category": "your.app.category.type",
+      "category": "public.app-category.developer-tools",
       "target": "dmg"
     },
     "extraFiles": [

@@ -11,6 +11,7 @@ let store = createStore(reducer, {
     chartIndex: 0,
     quickSearch: 0,
     yearRange: 10,
+    term: 'Q4',
     reportData: {}
 })
 

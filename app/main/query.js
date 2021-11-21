@@ -5,11 +5,13 @@ const fs = require('fs')
 const path = require('path');
 const os = require('os')
 
-const fileBuffer = fs.readFileSync(path.join(__dirname, '../db/stock.sqlite'))
+// const fileBuffer = fs.readFileSync(path.join(__dirname, '../db/stock.sqlite'))
+
 // const stockPath = path.join(__dirname, '../../../../../../config/stock/stock.sqlite')
-// const stockPath = path.join(os.homedir(), '/config/stock/stock.sqlite')
-// const fileBuffer = fs.readFileSync(stockPath)
 // const fileBuffer = fs.readFileSync('~/Desktop/stock.sqlite')
+
+const stockPath = path.join(os.homedir(), '/config/stock/stock.sqlite')
+const fileBuffer = fs.readFileSync(stockPath)
 
 let db
 initSqlJs().then(SQL => {
@@ -46,6 +48,7 @@ function findSectorStocks({sector}) {
     return stockList
 }
 
+// 查询财报数据
 function listStocksData({stocks, report, indicator, term, yearRange}) {
     const stocksDataMap = new Map()
 

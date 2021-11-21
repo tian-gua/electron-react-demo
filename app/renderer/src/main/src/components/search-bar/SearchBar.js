@@ -9,7 +9,6 @@ const {ipcRenderer} = window.require('electron')
 function SearchBar() {
     console.log('渲染SearchBar')
     const [selectedSector, setSelectedSector] = useState(undefined)
-    const [term, setTerm] = useState('Q4')
     const [sectorStocks, setSectorStocks] = useState([])
     const [sectorList, setSectorList] = useState([])
     const [stockA, setStockA] = useState(undefined)
@@ -72,7 +71,6 @@ function SearchBar() {
     const clearSearch = async () => {
         // form.resetFields()
         setSelectedSector(undefined)
-        setTerm('Q4')
         setStockA(undefined)
         setStockB(undefined)
         setStockC(undefined)
@@ -129,7 +127,10 @@ function SearchBar() {
                                 options={stockOptions}/>
                     </Col>
                     <Col span={2}>
-                        <Select style={{width: '100%'}} value={term} placeholder="财报" onChange={setTerm}>
+                        <Select style={{width: '100%'}}
+                                placeholder="财报"
+                                defaultValue={'Q4'}
+                                onChange={v => dispatch({type: 'setTerm', payload: v})}>
                             <Select.Option value='Q1'>一季报</Select.Option>
                             <Select.Option value='Q2'>半年报</Select.Option>
                             <Select.Option value='Q3'>三季报</Select.Option>
@@ -137,7 +138,9 @@ function SearchBar() {
                         </Select>
                     </Col>
                     <Col span={2}>
-                        <Select style={{width: '100%'}} placeholder="范围" defaultValue={10}
+                        <Select style={{width: '100%'}}
+                                placeholder="范围"
+                                defaultValue={10}
                                 onChange={v => dispatch({type: 'setYearRange', payload: v})}>
                             <Select.Option value={5}>近5年</Select.Option>
                             <Select.Option value={10}>近10年</Select.Option>

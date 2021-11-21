@@ -15,6 +15,7 @@ function Chart(props) {
     }
     const stocks = useSelector(state => state.stocks)
     const yearRange = useSelector(state => state.yearRange)
+    const term = useSelector(state => state.term)
     // const reportData = useSelector(state => state.reportData)
 
     const [reportData, setReportData] = useState(undefined)
@@ -110,7 +111,7 @@ function Chart(props) {
             stocks: stocks,
             report,
             indicator: v,
-            term: 'Q4',
+            term: term,
             yearRange
         })
         console.log('指标: ', res)
