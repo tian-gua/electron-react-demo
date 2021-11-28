@@ -9,20 +9,23 @@ import {indicator as indicatorMap, findIndicatorInfo, format} from "./Indicator"
 const {ipcRenderer} = window.require('electron')
 
 function Chart(props) {
-    let chartType = props.chartType
-    if (!chartType) {
-        chartType = 'bar'
-    }
+    console.log('渲染Chart组件...')
     const stocks = useSelector(state => state.stocks)
     const yearRange = useSelector(state => state.yearRange)
     const term = useSelector(state => state.term)
-    // const reportData = useSelector(state => state.reportData)
 
     const [reportData, setReportData] = useState(undefined)
     const [report, setReport] = useState(props.report)
-    const [indicator, setIndicator] = useState(props.defaultIndicator)
-    if (!indicatorMap[report].some(item => item.indicatorCode === indicator) && indicator !== '') {
-        setIndicator('')
+    const [indicator, setIndicator] = useState(props.defaultIndicator ? props.defaultIndicator : '')
+
+    const indicatorObj = indicatorMap[report].find(item => item.indicatorCode === indicator)
+
+    let chartType = 'bar'
+    if (indicatorObj) {
+        console.log(`indicatorObj = ${JSON.stringify(indicatorObj)}`)
+        if (indicatorObj.unit === '%') {
+            chartType = 'line'
+        }
     }
 
     const indicatorOptions = []

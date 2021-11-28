@@ -19,102 +19,102 @@ function StockChart() {
         const tempCharts = []
         tempCharts.push(<Col key='1' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='1' report='zyzb' defaultIndicator='jzcsyl' chartType='line'/>
+                <Chart chartId='1' report='zyzb' defaultIndicator='jzcsyl'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='2' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='2' report='zyzb' defaultIndicator='jlrtbzz' chartType='line'/>
+                <Chart chartId='2' report='zyzb' defaultIndicator='jlrtbzz'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='3' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='3' report='lrb' defaultIndicator='jbmgsy' chartType='bar'/>
+                <Chart chartId='3' report='lrb' defaultIndicator='jbmgsy'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='4' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='4' report='zyzb' defaultIndicator='zzcbcl' chartType='line'/>
+                <Chart chartId='4' report='zyzb' defaultIndicator='zzcbcl'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='5' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='5' report='zyzb' defaultIndicator='xsmll' chartType='line'/>
+                <Chart chartId='5' report='zyzb' defaultIndicator='xsmll'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='6' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='6' report='zyzb' defaultIndicator='zcfzl' chartType='line'/>
+                <Chart chartId='6' report='zyzb' defaultIndicator='zcfzl'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='7' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='7' report='zyzb' defaultIndicator='yysr' chartType='bar'/>
+                <Chart chartId='7' report='zyzb' defaultIndicator='yysr'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='8' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='8' report='zyzb' defaultIndicator='kfjlr' chartType='bar'/>
+                <Chart chartId='8' report='zyzb' defaultIndicator='kfjlr'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='9' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='9' report='lrb' defaultIndicator='yffy' chartType='bar'/>
+                <Chart chartId='9' report='lrb' defaultIndicator='yffy'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='10' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='10' report='zcfzb' defaultIndicator='hbzj' chartType='bar'/>
+                <Chart chartId='10' report='zcfzb' defaultIndicator='hbzj'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='11' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='11' report='zcfzb' defaultIndicator='sy' chartType='bar'/>
+                <Chart chartId='11' report='zcfzb' defaultIndicator='sy'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='12' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='12' report='zcfzb' defaultIndicator='cqjk' chartType='bar'/>
+                <Chart chartId='12' report='zcfzb' defaultIndicator='cqjk'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='13' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='13' report='zcfzb' defaultIndicator='dqjk' chartType='bar'/>
+                <Chart chartId='13' report='zcfzb' defaultIndicator='dqjk'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='14' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='14' report='zcfzb' defaultIndicator='zjgchj' chartType='bar'/>
+                <Chart chartId='14' report='zcfzb' defaultIndicator='zjgchj'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='15' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='15' report='zcfzb' defaultIndicator='fzhj' chartType='bar'/>
+                <Chart chartId='15' report='zcfzb' defaultIndicator='fzhj'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='16' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='16' report='zcfzb' defaultIndicator='wfplr' chartType='bar'/>
+                <Chart chartId='16' report='zcfzb' defaultIndicator='wfplr'/>
             </Card>
         </Col>)
         tempCharts.push(<Col key='17' span={12}>
             <Card bordered={true} style={{width: '100%', height: 400}}>
-                <Chart chartId='17' report='zcfzb' defaultIndicator='ssgdqy' chartType='bar'/>
+                <Chart chartId='17' report='zcfzb' defaultIndicator='ssgdqy'/>
             </Card>
         </Col>)
         // tempCharts.push(<Col key='18' span={12}>
         //     <Card bordered={true} style={{width: '100%', height: 400}}>
-        //         <Chart chartId='18' report='xjllb' defaultIndicator='jyhdcsdxjllje' chartType='bar'/>
+        //         <Chart chartId='18' report='xjllb' defaultIndicator='jyhdcsdxjllje' />
         //     </Card>
         // </Col>)
         // tempCharts.push(<Col key='19' span={12}>
         //     <Card bordered={true} style={{width: '100%', height: 400}}>
-        //         <Chart chartId='19' report='xjllb' defaultIndicator='czhdcsdxjlje' chartType='bar'/>
+        //         <Chart chartId='19' report='xjllb' defaultIndicator='czhdcsdxjlje' />
         //     </Card>
         // </Col>)
         // tempCharts.push(<Col key='20' span={12}>
         //     <Card bordered={true} style={{width: '100%', height: 400}}>
-        //         <Chart chartId='20' report='xjllb' defaultIndicator='tzhdcsdxjllje' chartType='bar'/>
+        //         <Chart chartId='20' report='xjllb' defaultIndicator='tzhdcsdxjllje' />
         //     </Card>
         // </Col>)
         return tempCharts;
