@@ -9,7 +9,11 @@ app.on('ready', () => {
 })
 
 app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin') app.quit()
+    // if (process.platform !== 'darwin') app.quit()
+
+    // mac系统也需要调用quit()函数退出进程
+    // 官网例子里有一个非mac系统的判断,但是实际mac系统同样需要quit()
+    app.quit()
 })
 
 function createWindow() {
